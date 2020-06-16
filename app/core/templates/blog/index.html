@@ -1,61 +1,414 @@
 {% extends 'blog/base.html' %}
+{% load static %}
 {% block content %}
+<section class="intro-section">
+    <div id="intro-bg"></div>
+    <div class="intro-container">
 
-<style>
-    body {
-        font-family: "Roboto", sans-serif;
-        font-size: 18px;
-        background-color: #fdfdfd;
-    }
+        <h1 class="article-item">Тут найкращі бізнес пропозиції</h1>
 
-    .head_text{
-        color: white;
-    }
+        <div class="search-form-container ">
+            <form class="search-form" action="/action_page.php">
+                <input type="text" placeholder="Пошук.." name="search">
+                <button type="submit"><i class="fa fa-search"></i></button>
+            </form>
+        </div>
 
-    .card{
-        box-shadow: 0 16px 48px #E3E7EB;
-    }
+        <div class="quick-categories">
+            <div class="categories-container">
+                <h4 class="categories-title">Швидкий пошук за категоріями:</h4>
 
-</style>
+                <div class="categories-wrap">
 
-<header class="masthead">
-    <div class="overlay"></div>
-    <div class="container">
-        <div class="row">
-            <div class=" col-md-8 col-md-10 mx-auto">
-                <div class="site-heading">
+                    <div class="inline-categories">
+                        <a href="#">
+                            <div class="icons-categories">
+                                <img src="{% static 'core/images/services-icon.png' %}">
+                            </div>
+                            <h3>Послуги</h3>
+                        </a>
+                    </div>
 
+                    <div class="inline-categories">
+                        <a href="#">
+                            <div class="icons-categories">
+                                <img src="{% static 'core/images/production-icon.png' %}">
+                            </div>
+                            <h3>Виробництво</h3>
+                        </a>
+                    </div>
 
-                    <h3 class=" site-heading my-4 mt-3 text-white">
-                     {% if user.is_authenticated %}
-                        Welcome to my awesome Blog {{ user.username }}
-                        {% else %}
-                        Welcome to my awesome Blog
-                        {% endif %}
-                    </h3>
-                    <p class="text-light">I love to code...hope u do too as well!!! &nbsp
-                    </p>
+                    <div class="inline-categories">
+                        <a href="#">
+                            <div class="icons-categories">
+                                <img src="{% static 'core/images/clothes-icon.png' %}">
+                            </div>
+                            <h3>Одяг</h3>
+                        </a>
+                    </div>
+
+                    <div class="inline-categories">
+                        <a href="#">
+                            <div class="icons-categories">
+                                <img src="{% static 'core/images/products-icon.png' %}">
+                            </div>
+                            <h3>Продукти</h3>
+                        </a>
+                    </div>
+
+                    <div class="inline-categories">
+                        <a href="#">
+                            <div class="icons-categories">
+                                <img src="{% static 'core/images/vacation-icon.png' %}">
+                            </div>
+                            <h3>Дозвілля</h3>
+                        </a>
+                    </div>
+
+                    <div class="inline-categories">
+                        <a href="#">
+                            <div class="icons-categories">
+                                <img src="{% static 'core/images/health-icon.png' %}">
+                            </div>
+                            <h3>Здоров'я</h3>
+                        </a>
+                    </div>
+
                 </div>
             </div>
         </div>
+
     </div>
-</header>
-<div class="container">
-    <div class="row">
-        <!-- Blog Entries Column -->
-        <div class="col-md-8 mt-3 left">
-            {% for post in post_list %}
-            <div class="card mb-4">
-                <div class="card-body">
-                    <h2 class="card-title">{{ post.title }}</h2>
-                    <p class="card-text text-muted h6">{{ post.author }} | {{ post.created_on}} </p>
-                    <p class="card-text">{{post.content|slice:":200" }}</p>
-                    <a href="{% url 'post_detail' post.slug  %}" class="btn btn-primary">Read More &rarr;</a>
+
+    <div class="slideshow-container">
+
+        <div class="mySlides fade" style="height:100%">
+            <img src="{% static 'core/images/buco.png' %}" class="slider-icon">
+            <img src="{% static 'core/images/nature1.jpg' %}" class="slider-bg">
+            <h3 class="slider-article">BUCO COFFEE</h3>
+            <div class="slider-text">Кавова мануфактура “BUCO” – виробник зернової та меленої кави на ринку України.
+                “BUCO” – це українська торговельна марка із виробничими потужностями у м.Чернівці.
+            </div>
+        </div>
+
+        <div class="mySlides fade" style="height:100%">
+            <img src="{% static 'core/images/buco.png' %}" class="slider-icon">
+            <img src="{% static 'core/images/nature2.jpg' %}" class="slider-bg">
+            <h3 class="slider-article">BUCO COFFEE</h3>
+            <div class="slider-text">Кавова мануфактура “BUCO” – виробник зернової та меленої кави на ринку України.
+                “BUCO” – це українська торговельна марка із виробничими потужностями у м.Чернівці.
+            </div>
+        </div>
+
+        <div class="mySlides fade" style="height:100%">
+            <img src="{% static 'core/images/buco.png' %}" class="slider-icon">
+            <img src="{% static 'core/images/nature3.jpg' %}" class="slider-bg">
+            <h3 class="slider-article">BUCO COFFEE</h3>
+            <div class="slider-text">Кавова мануфактура “BUCO” – виробник зернової та меленої кави на ринку України.
+                “BUCO” – це українська торговельна марка із виробничими потужностями у м.Чернівці.
+            </div>
+        </div>
+
+        <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+        <a class="next" onclick="plusSlides(1)">&#10095;</a>
+
+        <div class="dots-container">
+            <span class="dot" onclick="currentSlide(1)"></span>
+            <span class="dot" onclick="currentSlide(2)"></span>
+            <span class="dot" onclick="currentSlide(3)"></span>
+        </div>
+
+    </div>
+
+</section>
+
+<!--------------------------------------------------INTRO-SECTION-END---------------------------------------------------->
+
+<!-------------------------------------------------SLOGAN-SECTION-------------------------------------------------------->
+
+<section class="slogan-section">
+    <div class="slogan-bg"></div>
+    <div class="slogan-container">
+        <h1 class="slogan-article">"Зроблено у Чернівцях" - <br> для тих, хто підтримує <br> чернівецького виробника
+        </h1>
+        <a href="" class="slogan-link">Додати оголошення</a>
+    </div>
+</section>
+
+<!-------------------------------------------------SLOGAN-SECTION-END---------------------------------------------------->
+
+<!-------------------------------------------------STATS-SECTION START--------------------------------------------->
+<section class="stats-section">
+    <h1 class="article-item" style="color: white; position: relative;">У нас ви знайдете:</h1>
+    <div id="stats-bg"></div>
+    <div class="stats-container">
+        <div class="stats-wrap">
+            <div class="inline-stats">
+                <div class="num">555</div>
+                <h3>Виробників</h3>
+            </div>
+            <div class="inline-stats">
+                <div class="num">444</div>
+                <h3>Послуг</h3>
+            </div>
+            <div class="inline-stats">
+                <div class="num">8888</div>
+                <h3>Товарів</h3>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-------------------------------------------------STATS-SECTION END--------------------------------------------->
+
+<!-------------------------------------------------MAIN-SECTION START--------------------------------------------->
+
+<section class="main-prop">
+    <div class="main-prop-container">
+        <div class="article-item">
+            <h2>Основний каталог</h2>
+        </div>
+        <div class="row-main-prop">
+
+            <div class="column-main-prop">
+                <div class="card-main-prop">
+                    <div class="img-block-mp">
+                        <img src="{% static 'core/images/buco.png' %}"class="img-mp">
+                    </div>
+                    <div class="txt-block-mp">
+                        <h3>BUCO COFFEE</h3>
+                        <p>Кавова мануфактура “BUCO” – виробник зернової та меленої кави на ринку України.“BUCO” – це
+                            українська торговельна марка із виробничими потужностями у м.Чернівці.</p>
+                    </div>
                 </div>
             </div>
-            {% endfor %}
+
+            <div class="column-main-prop">
+                <div class="card-main-prop">
+                    <div class="img-block-mp">
+                        <img src="{% static 'core/images/buco.png' %}" class="img-mp">
+                    </div>
+                    <div class="txt-block-mp">
+                        <h3>BUCO COFFEE</h3>
+                        <p>Кавова мануфактура “BUCO” – виробник зернової та меленої кави на ринку України.“BUCO” – це
+                            українська торговельна марка із виробничими потужностями у м.Чернівці.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="column-main-prop">
+                <div class="card-main-prop">
+                    <div class="img-block-mp">
+                        <img src="{% static 'core/images/buco.png' %}" class="img-mp">
+                    </div>
+                    <div class="txt-block-mp">
+                        <h3>BUCO COFFEE</h3>
+                        <p>Кавова мануфактура “BUCO” – виробник зернової та меленої кави на ринку України.“BUCO” – це
+                            українська торговельна марка із виробничими потужностями у м.Чернівці.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="column-main-prop">
+                <div class="card-main-prop">
+                    <div class="img-block-mp">
+                        <img src="{% static 'core/images/buco.png' %}" class="img-mp">
+                    </div>
+                    <div class="txt-block-mp">
+                        <h3>BUCO COFFEE</h3>
+                        <p>Кавова мануфактура “BUCO” – виробник зернової та меленої кави на ринку України.“BUCO” – це
+                            українська торговельна марка із виробничими потужностями у м.Чернівці.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="column-main-prop">
+                <div class="card-main-prop">
+                    <div class="img-block-mp">
+                        <img src="{% static 'core/images/buco.png' %}" class="img-mp">
+                    </div>
+                    <div class="txt-block-mp">
+                        <h3>BUCO COFFEE</h3>
+                        <p>Кавова мануфактура “BUCO” – виробник зернової та меленої кави на ринку України.“BUCO” – це
+                            українська торговельна марка із виробничими потужностями у м.Чернівці.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="column-main-prop">
+                <div class="card-main-prop">
+                    <div class="img-block-mp">
+                        <img src="{% static 'core/images/buco.png' %}" class="img-mp">
+                    </div>
+                    <div class="txt-block-mp">
+                        <h3>BUCO COFFEE</h3>
+                        <p>Кавова мануфактура “BUCO” – виробник зернової та меленої кави на ринку України.“BUCO” – це
+                            українська торговельна марка із виробничими потужностями у м.Чернівці.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="column-main-prop">
+                <div class="card-main-prop">
+                    <div class="img-block-mp">
+                        <img src="{% static 'core/images/buco.png' %}" class="img-mp">
+                    </div>
+                    <div class="txt-block-mp">
+                        <h3>BUCO COFFEE</h3>
+                        <p>Кавова мануфактура “BUCO” – виробник зернової та меленої кави на ринку України.“BUCO” – це
+                            українська торговельна марка із виробничими потужностями у м.Чернівці.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="column-main-prop">
+                <div class="card-main-prop">
+                    <div class="img-block-mp">
+                        <img src="{% static 'core/images/buco.png' %}" class="img-mp">
+                    </div>
+                    <div class="txt-block-mp">
+                        <h3>BUCO COFFEE</h3>
+                        <p>Кавова мануфактура “BUCO” – виробник зернової та меленої кави на ринку України.“BUCO” – це
+                            українська торговельна марка із виробничими потужностями у м.Чернівці.</p>
+                    </div>
+                </div>
+            </div>
+
         </div>
-        {% block sidebar %} {% include 'blog/sidebar.html' %} {% endblock sidebar %}
     </div>
-</div>
+</section>
+
+<!-------------------------------------------------MAIN-SECTION END--------------------------------------------->
+
+<!-------------------------------------------------FASTMENU-SECTION START--------------------------------------------->
+
+<section class="fastmenu-section">
+    <div class="fastmenu-bg"></div>
+    <div class="fastmenu-container">
+        <div class="fastmenu-wrap">
+            <div class="inline-fastmenu">
+                <a href="#">
+                    <img src="{% static 'core/images/blog.png' %}">
+                    <h3>Блог</h3>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-------------------------------------------------FASTMENU-SECTION END--------------------------------------------->
+
+<!-------------------------------------------------COMMENT-SECTION START--------------------------------------------->
+
+<section class="comment-section">
+    <div class="comment-container">
+        <div class="article-item">
+            <h2>Відгуки</h2>
+        </div>
+
+        <div class="slideshow-container2">
+            <div class="mySlidess fade" style="height:100%">
+                <h2 class="name-user">Анатолій Гандабура</h2>
+                <h3 class="city-user">м. Хмельницький</h3>
+                <p class="com-user">Завдяки цьому сайту я знайшла виробника, з яким уклала договір про співпрацю! </p>
+            </div>
+            <div class="mySlidess fade" style="height:100%">
+                <h2 class="name-user">Анатолій</h2>
+                <h3 class="city-user">м. Чернівці</h3>
+                <p class="com-user">Сайт зручний у користуванні. Я навіть не знав, що у Чернівцях є так багато
+                    виробників. </p>
+            </div>
+            <div class="mySlidess fade" style="height:100%">
+                <h2 class="name-user">Гандабура</h2>
+                <h3 class="city-user">м. Тернопіль</h3>
+                <p class="com-user">Ця онлайн платформа дозволяє знайомитися з продукцією Буковини. </p>
+            </div>
+            <a class="prev2" onclick="plusSlides_com(-1)">&#10094;</a>
+            <a class="next2" onclick="plusSlides_com(1)">&#10095;</a>
+
+            <div class="dots-container">
+                <span class="dot_com" onclick="currentSlide_com(1)"></span>
+                <span class="dot_com" onclick="currentSlide_com(2)"></span>
+                <span class="dot_com" onclick="currentSlide_com(3)"></span>
+            </div>
+        </div>
+
+        <script>
+			var slideIndex_com = 1;
+			showSlides_com(slideIndex_com);
+
+			function plusSlides_com(n) {
+				showSlides_com(slideIndex_com += n);
+			}
+
+			function currentSlide_com(n) {
+				showSlides_com(slideIndex_com = n);
+			}
+
+			function showSlides_com(n) {
+				var i;
+				var slides_com = document.getElementsByClassName("mySlidess");
+				var dots_com = document.getElementsByClassName("dot_com");
+				if (n > slides_com.length) {slideIndex_com = 1}
+				if (n < 1) {slideIndex_com = slides_com.length}
+				for (i = 0; i < slides_com.length; i++) {
+					slides_com[i].style.display = "none";
+				}
+				for (i = 0; i < dots_com.length; i++) {
+					dots_com[i].className = dots_com[i].className.replace(" active", "");
+				}
+				slides_com[slideIndex_com-1].style.display = "block";
+				dots_com[slideIndex_com-1].className += " active";
+			}
+        </script>
+	</div>>
+</section>
+
+<!-------------------------------------------------COMMENT-SECTION END--------------------------------------------->
+
+
+<script>
+			var slideIndex = 1;
+			showSlides(slideIndex);
+
+			function plusSlides(n) {
+				showSlides(slideIndex += n);
+			}
+
+			function currentSlide(n) {
+				showSlides(slideIndex = n);
+			}
+
+			function showSlides(n) {
+				var i;
+				var slides = document.getElementsByClassName("mySlides");
+				var dots = document.getElementsByClassName("dot");
+				if (n > slides.length) {slideIndex = 1}
+				if (n < 1) {slideIndex = slides.length}
+				for (i = 0; i < slides.length; i++) {
+					slides[i].style.display = "none";
+				}
+				for (i = 0; i < dots.length; i++) {
+					dots[i].className = dots[i].className.replace(" active", "");
+				}
+				slides[slideIndex-1].style.display = "block";
+				dots[slideIndex-1].className += " active";
+			}
+
+            function change(){
+                var hours = new Date().getHours();
+                var isDayTime = hours > 6 && hours < 20;
+                if(isDayTime){
+                    document.getElementById("intro-bg").style.backgroundImage = 'url(img/day1.jpg)';
+                    document.getElementById("stats-bg").style.backgroundImage = 'url(img/day2.jpg)';
+                }
+                else{
+                    document.getElementById("intro-bg").style.backgroundImage = 'url(img/night1.jpg)';
+                    document.getElementById("stats-bg").style.backgroundImage = 'url(img/night2.jpg)';
+                }
+                var t = setTimeout(change, 18000);
+            }
+
+
+</script>
 {%endblock%}

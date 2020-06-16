@@ -1,3 +1,4 @@
+
 * {box-sizing: border-box}
 
 body {font-family: 'Roboto', sans-serif; margin:0}
@@ -275,7 +276,7 @@ form.search-form::after {
 }
 
 #intro-bg {
-    background-image: url(img/day1.jpg);
+    background-image: url('/static/core/images/day1.jpg');
     filter: brightness(60%);
     position: absolute;
     top: 0;
@@ -545,7 +546,7 @@ form.search-form::after {
 }
 
 #stats-bg {
-    background-image: url(img/day2.jpg);
+    background-image: url('/static/core/images/day2.jpg');
     filter: brightness(60%);
     position: absolute;
     top: 0;
@@ -606,7 +607,7 @@ form.search-form::after {
 }
 
 .card-main-prop {
-    background: url(img/coffe.jpg) 100% no-repeat;
+    background: url('/static/core/images/coffe.jpg') 100% no-repeat;
     background-size: contain;
     background-position: top;
 	box-shadow: 0 0 10px 5px rgba(221, 221, 221, 1);
@@ -670,7 +671,7 @@ form.search-form::after {
 /*fastmenu*/
 
 .fastmenu-bg {
-    background-image: url(img/work.png);
+    background-image: url('/static/core/images/work.png');
     position: absolute;
     top: 0;
     left: 0;

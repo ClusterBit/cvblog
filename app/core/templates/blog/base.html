@@ -1,97 +1,137 @@
 <!DOCTYPE html>
+{% load static %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-     <link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet">
-    <meta name="google" content="notranslate" />
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-
-
-    <title>Kodechamp Blog</title>
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet">
+    <meta name="google" content="notranslate"/>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+            integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+            crossorigin="anonymous"></script>
+    <link rel="stylesheet" type="text/css" href="{% static 'core/styles/style.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+    <link rel="icon" href="img/favicon.svg" sizes="any" type="image/svg+xml">
+    <title>MADE IN CV</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
-    <style>
-        body{
-            font-family: "Roboto", sans-serif;
-            font-size: 17px;
-            background-color: #fdfdfd;
+<div class="top-header-bg">
+    <div class="top-header-left">
+        <ul>
+            <li>
+                <p style="font-weight: 300;">КУПУЙ ЧЕРНІВЕЦЬКЕ</p>
+            </li>
+            <li class="numb">
+                <a href="tel:+380954793289" style="text-decoration: none; color: #000000;"><i
+                        class="fas fa-phone-volume" style="padding-left: 20px;"></i>    +38 (095) 479 3289</a>
+            </li>
+        </ul>
+    </div>
+    <div class="top-header-right">
+        <ul>
+            <li>
+                <a href="#"><i class="far fa-envelope" style="font-size: 18px"></i></a>
+            </li>
+            <li>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+            </li>
 
-        }
+            <li>
+                <a href="#"><i class="fab fa-facebook"></i></a>
+            </li>
+
+            <li>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+            </li>
+
+            <li>
+                <a href="#"><i class="fab fa-telegram"></i></a>
+            </li>
+
+            <li>
+                <a href="#"><i class="fab fa-viber"></i></a>
+            </li>
+
+            <li>
+                <a href="#"><i class="fab fa-whatsapp"></i></a>
+            </li>
+        </ul>
+    </div>
+</div>
+<div class="main-header">
+    <div class="main-header-left">
+        <ul>
+
+            <a href="{% url 'index' %}"><img class="logo" src="{% static 'core/images/logo.png' %}"></a>
+            <li style="border-right: 2px solid #ffffff;">
+                <a href="#">Про нас</a>
+            </li>
+            <li>
+                <a href="#">Пропозиції</a>
+            </li>
+            <li class="blog">
+                <a href="#">Блог</a>
+            </li>
+        </ul>
+    </div>
+    <div class="main-header-right">
+        <a class="addbtn" href="#">Додати оголошення</a>
+        <ul>
+            <li class="user-dropdown">
+                <div class="user-dropbtn"><a class="user">   <i class="fas fa-user"></i></a></div>
+                <div class="user-dropdown-content">
+                    {% if user.is_authenticated %}
+                    <a href="{% url 'logout' %}">Logout</a>
+                    {% else %}
+                    <a href="{% url 'login' %}">Login</a>
+                    {% endif %}
+                    <a href="{% url 'signup' %}">Sign Up</a>
+                </div>
+            </li>
+            <li class="language-dropdown">
+                <div class="language-dropbtn"><a class="line"><i class="fas fa-globe"></i>
+                    <p style="float: right">  En</p></a></div>
+                <div class="language-dropdown-content">
+                    <a href="#">En</a>
+                    <a href="#">En</a>
+                    <a href="#">En</a>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+<!-- Navigation -->
+
+
+{% block content %}
+<!--Content Goes Here-->
+{% endblock content%}
 
 
 
-        .footer {
-            position: fixed;
-            left: 0;
-            bottom: 0;
-            width: 100%;
-            background-color: #3398E1;
-            color: white;
-            text-align: center;
-        }
-
-        .shadow {
-            box-shadow: 0 4px 2px -2px rgba(0, 0, 0, 0.1);
-        }
-
-        .btn-danger {
-            color: #fff;
-            background-color: #f00000;
-            border-color: #dc281e;
-        }
-
-        .masthead{
-            background: #3398E1;
-            height: auto;
-            padding-bottom: 15px;
-            box-shadow: 0 16px 48px #E3E7EB;
-            padding-top: 10px
-        }
+<footer class="footer">
+    <br>
+    <div class="f_txt">
+        <div class="f">
 
 
-
-
-    </style>
-    <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light shadow" id="mainNav">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="{% url 'home' %}">Kodechamp</a>
-            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive"
-                    aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarResponsive">
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item text-black">
-                            <a class="nav-link text-black font-weight-bold" href="#">About</a>
-                        </li>
-                        <li class="nav-item text-black">
-                            <a class="nav-link text-black font-weight-bold" href="#">Policy</a>
-                        </li>
-
-                        {% if user.is_authenticated %}
-                         <li class="nav-item text-black">
-                            <a class="nav-link text-black font-weight-bold" href="{% url 'logout' %}">Logout</a>
-                        </li>
-                        {% else %}
-                        <li class="nav-item text-black">
-                            <a class="nav-link text-black font-weight-bold" href="{% url 'signup' %}">Sign Up</a>
-                        </li>
-                        {% endif %}
-                </ul>
-            </div>
+            <a href="#">Профіль</a>
+            <div>|</div>
+            <a href="#">Партнери</a>
+            <div>|</div>
+            <a href="#">Знак якості</a>
         </div>
-    </nav>
+    </div>
+    <br>
+    <div class="f_txt">
+        <div class="f">
 
 
-    {% block content %}
-     <!--Content Goes Here-->
-    {% endblock content%}
-
-
-
-
+            <div>Телефон: +380999999999</div>
+            <div>|</div>
+            <div>Пошта: poshta@gmail.com</div>
+        </div>
+    </div>
+</footer>
 </body>
 </html>
