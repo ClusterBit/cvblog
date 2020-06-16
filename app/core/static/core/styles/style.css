@@ -466,10 +466,10 @@ form.search-form::after {
 	border: 2px solid #ffffff;
 }
 
-.slogan-link:hover {background-color: #114e30}
+.slogan-link:hover {background-color: #02544e}
 
 .slogan-link:active {
-  background-color: #114e30;
+  background-color: #00403b;
   box-shadow: 0 5px #666;
   transform: translateY(4px);
 }
