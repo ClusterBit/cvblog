@@ -2,25 +2,25 @@
 
 {% block content %}
 <div class="container">
-    <h2>Login</h2>
+    <h2>Вхід</h2>
     <form method="POST">
         {% csrf_token %}
         {% for field in form %}
         <div class="form-group">
-            {{ field.errors }}
-            <label>{{ field.label_tag }}</label>
-            <p>{{ field }}</p>
+            <p>Логін: </p>
+            <p>{{ user_form.username }}</p>
+            <p>Пароль: </p>
+            <p>{{ user_form.password1 }}</p>
         </div>
         {% endfor %}
-        <button type="submit" class="btn btn-primary">Login</button>
-        <button type="reset" class="btn btn-primary">Reset</button>
+        <button type="submit" class="btn btn-primary">Увійти</button>
+        <button type="reset" class="btn btn-primary">Стерти</button>
     </form>
     <div>
-        <a href="{% url 'signup' %}">Not a Member...Sign up</a>
-
+        <a href="{% url 'signup' %}">Немаю аккаунту</a>
     </div>
     <div>
-        <a href="{% url 'password_reset' %}">Forgot Password</a>
+        <a href="{% url 'password_reset' %}">Не пам'ятаю пароль</a>
     </div>
 </div>
 
