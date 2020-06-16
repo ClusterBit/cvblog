@@ -203,6 +203,92 @@ form.search-form::after {
 }
 
 /*******************************************SEARCH_FORM_END********************************************************/
+/*****************************************form_registrations********************************************************/
+.container{
+    background: #F1F2F4;
+    border-bottom: 2px solid #C5C5C8;
+    border-radius: 5px;
+    text-shadow: 0 1px 0 #FFF;
+    box-shadow: 0 0 3px #000;
+    position: relative;
+    margin: 0 auto;
+    width: 50%;
+    max-width: 600px;
+    min-width: 300px;
+    padding: 20px;
+    margin-top: 100px;
+}
+.text_reg{
+    color: #7E7E7E;
+    font: bold 25px Helvetica, Arial, sans-serif;
+    letter-spacing: -0.05em;
+    line-height: 20px;
+    margin: 10px 0 30px;
+    text-align: center;
+}
+.text_reg:before{
+    background: -webkit-linear-gradient(right, #006860 0%,rgba(255,255,255,1) 100%);
+    content: "";
+    height: 1px;
+    position: absolute;
+    top: 40px;
+    left: 0;
+    width: 35%;
+}
+.text_reg:after{
+    background: -webkit-linear-gradient(left, #006860 0%,rgba(255,255,255,1) 100%);
+    content: "";
+    height: 1px;
+    position: absolute;
+    top: 40px;
+    right: 0;
+    width: 35%;
+}
+.label{
+    display: inline-block;
+    margin: 0px;
+    float: left;
+    width: 100%;
+    top: 0px;
+    color: #032942;
+    font-size: 15px;
+    font-weight: 700;
+    text-align: left;
+    line-height: 1.5;
+}
+.input input, textarea{
+    box-shadow: 0 1px 0 #fff, 0 -2px 5px rgba(0,0,0,0.08) inset;
+    border-radius: 3px;
+    transition: all 0.5s ease;
+    background: #eae7e7 no-repeat;
+    border: 1px solid #c8c8c8;
+    color: #777;
+    font: 13px Helvetica, Arial, sans-serif;
+    margin: 0 0 10px;
+    padding: 15px 10px 15px 40px;
+    width: 100%;
+}
+ul li label{
+    font-size: 20px;
+    font-family: sans-serif;
+    line-height: 2;
+}
+.form button{
+    margin-top: 20px;
+    display: block;
+    width: 100%;
+    line-height: 2em;
+    background: #006860;
+    border-radius: 5px;
+    border: 0;
+    cursor: pointer;
+    border-top: 1px solid #B2ECE6;
+    box-shadow: 0 0 0 1px #46A294, 0 2px 2px #808389;
+    color: #FFFFFF;
+    font-size: 1.5em;
+    text-shadow: 0 1px 2px #21756A;
+}
+/*****************************************end_form_registrations********************************************************/
 
 /*******************************************QUICK_CATEGORIES*******************************************************/
 
@@ -466,10 +552,10 @@ form.search-form::after {
 	border: 2px solid #ffffff;
 }
 
-.slogan-link:hover {background-color: #114e30}
+.slogan-link:hover {background-color: #02544e}
 
 .slogan-link:active {
-  background-color: #114e30;
+  background-color: #00403b;
   box-shadow: 0 5px #666;
   transform: translateY(4px);
 }

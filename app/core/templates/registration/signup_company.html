@@ -2,29 +2,29 @@
 
 {% block content %}
 <div class="container">
-    <h2>Реєстрація</h2>
-    <form method="POST" enctype='multipart/form-data'>
+    <h2 class="text_reg">Реєстрація</h2>
+    <form class="form" method="POST" enctype='multipart/form-data'>
         {% csrf_token %}
-        <p>Логін: </p>
-        <p>{{ user_form.username }}</p>
-        <p>Пароль: </p>
-        <p>{{ user_form.password1 }}</p>
-        <p>Пітдвердження паролю: </p>
-        <p>{{ user_form.password2 }}</p>
-        <p>Електронна пошта: </p>
-        <p>{{ user_form.email }}</p>
-        <p>Назва представника: </p>
-        <p>{{ company_profile_form.name }}</p>
-        <p>Логотип: </p>
+        <p class="label">Логін: </p>
+        <p class="input">{{ user_form.username }}</p>
+        <p class="label">Пароль: </p>
+        <p class="input">{{ user_form.password1 }}</p>
+        <p class="label">Пітдвердження паролю: </p>
+        <p class="input">{{ user_form.password2 }}</p>
+        <p class="label">Електронна пошта: </p>
+        <p class="input">{{ user_form.email }}</p>
+        <p class="label">Назва представника: </p>
+        <p class="input">{{ company_profile_form.name }}</p>
+        <p class="label">Логотип: </p>
         <p>{{ company_profile_form.logo }}</p>
-        <p>Детальний опис: </p>
-        <p>{{ company_profile_form.desc_field }}</p>
-        <p>Номер телефону: </p>
-        <p>{{ company_profile_form.phone }}</p>
-        <p>Адреса: </p>
-        <p>{{ company_profile_form.location }}</p>
-        <p>Категорії: </p>
-        <p>{{ company_profile_form.category }}</p>
+        <p class="label">Детальний опис: </p>
+        <p class="input">{{ company_profile_form.desc_field }}</p>
+        <p class="label">Номер телефону: </p>
+        <p class="input">{{ company_profile_form.phone }}</p>
+        <p class="label">Адреса: </p>
+        <p class="input">{{ company_profile_form.location }}</p>
+        <p class="label">Категорії: </p>
+        <p class="input">{{ company_profile_form.category }}</p>
         <button type="submit" class="btn btn-primary">Зареєструватись</button>
         <button type="reset" class="btn btn-primary">Стерти</button>
         <a href="{% url 'login' %}">У мене вже є аккаунт</a>
