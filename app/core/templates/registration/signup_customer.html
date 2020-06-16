@@ -2,16 +2,29 @@
 
 {% block content %}
 <div class="container">
-    <h2>Sign Up</h2>
+    <h2>Реєстрація</h2>
     <form method="POST" enctype='multipart/form-data'>
         {% csrf_token %}
-        {{ user_form.as_p }}
-        {{ customer_profile_form.as_p }}
-        <button type="submit" class="btn btn-primary">Sign up</button>
-        <button type="reset" class="btn btn-primary">Reset</button>
-        <a href="{% url 'login' %}">Already a Member</a>
+        <p>Логін: </p>
+        <p>{{ user_form.username }}</p>
+        <p>Пароль: </p>
+        <p>{{ user_form.password1 }}</p>
+        <p>Пітдвердження паролю: </p>
+        <p>{{ user_form.password2 }}</p>
+        <p>Електронна пошта: </p>
+        <p>{{ user_form.email }}</p>
+        <p>Ім'я: </p>
+        <p>{{ customer_profile_form.name }}</p>
+        <p>Прізвище: </p>
+        <p>{{ customer_profile_form.sur_name }}</p>
+        <p>Аватар: </p>
+        <p>{{ customer_profile_form.avatar }}</p>
+        <p>Номер телефону: </p>
+        <p>{{ customer_profile_form.phone }}</p>
+        <button type="submit" class="btn btn-primary">Зареєструватись</button>
+        <button type="reset" class="btn btn-primary">Стерти</button>
+        <a href="{% url 'login' %}">У мене вже є аккаунт</a>
     </form>
-
 </div>
 
 
