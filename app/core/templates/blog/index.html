@@ -394,21 +394,21 @@
 				slides[slideIndex-1].style.display = "block";
 				dots[slideIndex-1].className += " active";
 			}
-
             function change(){
+                console.log('called')
                 var hours = new Date().getHours();
                 var isDayTime = hours > 6 && hours < 20;
                 if(isDayTime){
-                    document.getElementById("intro-bg").style.backgroundImage = 'url(img/day1.jpg)';
-                    document.getElementById("stats-bg").style.backgroundImage = 'url(img/day2.jpg)';
+                    document.getElementById("intro-bg").style.backgroundImage = 'url({% static 'core/images/day1.jpg' %})';
+                    document.getElementById("stats-bg").style.backgroundImage = 'url({% static 'core/images/day2.jpg' %})';
+                    console.log(hours);
                 }
                 else{
-                    document.getElementById("intro-bg").style.backgroundImage = 'url(img/night1.jpg)';
-                    document.getElementById("stats-bg").style.backgroundImage = 'url(img/night2.jpg)';
+                    document.getElementById("intro-bg").style.backgroundImage = 'url({% static 'core/images/night1.jpg' %})';
+                    document.getElementById("stats-bg").style.backgroundImage = 'url({% static 'core/images/night2.jpg' %})';
                 }
-                var t = setTimeout(change, 18000);
+                var t = setTimeout(change, 3600);
             }
-
-
+            change();
 </script>
 {%endblock%}
