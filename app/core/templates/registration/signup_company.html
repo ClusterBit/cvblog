@@ -2,16 +2,33 @@
 
 {% block content %}
 <div class="container">
-    <h2>Sign Up</h2>
+    <h2>Реєстрація</h2>
     <form method="POST" enctype='multipart/form-data'>
         {% csrf_token %}
-        {{ user_form.as_p }}
-        {{ company_profile_form.as_p }}
-        <button type="submit" class="btn btn-primary">Sign up</button>
-        <button type="reset" class="btn btn-primary">Reset</button>
-        <a href="{% url 'login' %}">Already a Member</a>
+        <p>Логін: </p>
+        <p>{{ user_form.username }}</p>
+        <p>Пароль: </p>
+        <p>{{ user_form.password1 }}</p>
+        <p>Пітдвердження паролю: </p>
+        <p>{{ user_form.password2 }}</p>
+        <p>Електронна пошта: </p>
+        <p>{{ user_form.email }}</p>
+        <p>Назва представника: </p>
+        <p>{{ company_profile_form.name }}</p>
+        <p>Логотип: </p>
+        <p>{{ company_profile_form.logo }}</p>
+        <p>Детальний опис: </p>
+        <p>{{ company_profile_form.desc_field }}</p>
+        <p>Номер телефону: </p>
+        <p>{{ company_profile_form.phone }}</p>
+        <p>Адреса: </p>
+        <p>{{ company_profile_form.location }}</p>
+        <p>Категорії: </p>
+        <p>{{ company_profile_form.category }}</p>
+        <button type="submit" class="btn btn-primary">Зареєструватись</button>
+        <button type="reset" class="btn btn-primary">Стерти</button>
+        <a href="{% url 'login' %}">У мене вже є аккаунт</a>
     </form>
-
 </div>
 
 
