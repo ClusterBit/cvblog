@@ -6,7 +6,7 @@ click==7.1.2
 codegen==1.0
 cycler==0.10.0
 distlib==0.3.0
-Django==2.0.1
+Django==2.2.13
 django-cleanup==4.0.0
 django-crispy-forms==1.7.0
 django-el-pagination==3.3.0
