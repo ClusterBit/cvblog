@@ -395,13 +395,11 @@
 				dots[slideIndex-1].className += " active";
 			}
             function change(){
-                console.log('called')
                 var hours = new Date().getHours();
                 var isDayTime = hours > 6 && hours < 20;
                 if(isDayTime){
                     document.getElementById("intro-bg").style.backgroundImage = 'url({% static 'core/images/day1.jpg' %})';
                     document.getElementById("stats-bg").style.backgroundImage = 'url({% static 'core/images/day2.jpg' %})';
-                    console.log(hours);
                 }
                 else{
                     document.getElementById("intro-bg").style.backgroundImage = 'url({% static 'core/images/night1.jpg' %})';
