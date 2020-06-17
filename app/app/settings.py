@@ -81,8 +81,12 @@ WSGI_APPLICATION = 'app.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'cvblog_db',
+        'USER': 'postgres',
+        'PASSWORD': 'moloko322',
+        'HOST': 'localhost',
+        'PORT': '5432',
     }
 }
 
@@ -129,6 +133,9 @@ STATIC_URL = '/static/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
+LOGIN_REDIRECT_URL = 'home'
+LOGIN_URL = 'login'
+LOGOUT_REDIRECT_URL = 'home'
 
 DJANGORESIZED_DEFAULT_SIZE = [300, 300]
 DJANGORESIZED_DEFAULT_QUALITY = 75
@@ -137,12 +144,10 @@ DJANGORESIZED_DEFAULT_FORCE_FORMAT = 'JPEG'
 DJANGORESIZED_DEFAULT_FORMAT_EXTENSIONS = {'JPEG': ".jpg"}
 DJANGORESIZED_DEFAULT_NORMALIZE_ROTATION = True
 
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
 EMAIL_HOST = 'smtp.gmail.com'
-
-EMAIL_HOST_USER = 'clusterbitgithub@gmail.com'
-
-EMAIL_HOST_PASSWORD = 'anaconda551155'
-
 EMAIL_PORT = 587
-
 EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'clusterbitgithub@gmail.com'
+EMAIL_HOST_PASSWORD = 'anaconda551155'
