@@ -1119,6 +1119,50 @@ ul li label{
     height: 60px;
 }
 
+.menu-dropdown {
+    position: relative;
+    display: none;
+}
+
+.menu-dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #18BCAF;
+    min-width: 50px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    top: 68px;
+    left: 0px;
+    z-index: 2;
+}
+
+.menu-dropdown-content a {
+    color: black;
+    padding: 12px 26px;
+    text-decoration: none;
+    display: block;
+    z-index: 2;
+    border-bottom: 2px solid white;
+}
+
+.menu-dropdown-content a:last-child{
+border:0px;
+}
+
+.menu-dropbtn{
+    font-size: 30px;
+    display: inline-block;
+    margin: 20px;
+    margin-right: 5px;
+    color: #ffffff;
+    z-index: 2;
+}
+
+.menu-dropdown-content a:hover {background-color: #006860}
+
+.menu-dropdown:hover .menu-dropdown-content {
+    display: block;
+}
+
 .main-header-left{
     text-align: left;
     float: left;
@@ -1175,6 +1219,22 @@ ul li label{
 .addbtn:hover{
     text-decoration: none;
     background-color: #035B54;
+}
+
+.smlbtn{
+    display:none;
+    padding: 0px;
+    text-decoration: none;
+    background-color: #006860;
+    color: #ffffff;
+    margin-top: 14px;
+    margin-right: 5px;
+    float:left;
+    text-align: center;
+    font-size: 20px;
+    border-radius: 10px 10px 10px 10px;
+    border: 2px solid #ffffff;
+    padding: 6px;
 }
 
 .blog {
@@ -1296,7 +1356,10 @@ ul li label{
     .addbtn {
     display: none;
     }
-    
+    .smlbtn{
+    display: block;
+    }
+
 }
 @media only screen and (max-width: 800px){
     .top-header-left ul {
@@ -1312,10 +1375,14 @@ ul li label{
     }
     
 }
-@media only screen and (max-width: 740px){
+
+@media only screen and (max-width: 790px){
     .main-header-left li {
     display: none;
     }
+    .menu-dropdown {
+    display: inline-block;
+}
 }
 @media only screen and (max-width: 456px){
     .top-header-left {
@@ -1335,6 +1402,18 @@ ul li label{
     }
 }
 
+.about-container{
+    border: 1px solid lightgray;
+    border-radius: 10px;
+    margin: 3% auto;
+    width: 90%;
+    padding: 1vw 2vw;
+}
+
+.about-container p{
+    text-indent: 1.8vw;
+    font-size: 1.6vw;
+}
 
 /*************************************BLOG_PAGES*************************************/
 .b_news{
@@ -1617,6 +1696,11 @@ ul li label{
   user-select: none;
   z-index: 2;
 }
+.about-container h3{
+text-indent: 2vw;
+font-size: 2vw;
+margin:0 0;
+}
 
 .next3 {
   float: right;
@@ -1703,3 +1787,18 @@ ul li label{
 }
 /*****************************************SLIDER3_CONTAINER_END********************************************************/
 /*************************************END_BLOG_PAGES*************************************/
+.about-container img{
+    width: 18vw;
+    float: left;
+    margin-right: 1.5vw;
+    margin-top: 3vw;
+}
+
+.about-container li{
+    text-indent: 1.8vw;
+    font-size: 1.6vw;
+}
+.about-container ul{
+    margin: 0.5vw 3vw;
+    padding: 0;
+}

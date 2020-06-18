@@ -1,14 +1,10 @@
-from django.shortcuts import render, redirect
+from django.forms import modelformset_factory
+from django.shortcuts import render, redirect, get_object_or_404
 from django.views import generic
 from django.views.generic import TemplateView
-
-from .models import Post
-
-from django.core.mail import send_mail, BadHeaderError
-from django.http import HttpResponse
-
+from .models import Post, PostImages
 from django.contrib.auth import authenticate, login
-from .forms import UserCreateForm, CustomerSignForm, CompanySignForm
+from .forms import UserCreateForm, CustomerSignForm, CompanySignForm, PostCreateForm, ImageForm
 
 
 class PostList(generic.ListView):
@@ -16,9 +12,10 @@ class PostList(generic.ListView):
     template_name = 'blog/index.html'  # a list of all posts will be displayed on index.html
 
 
-class PostDetail(generic.DetailView):
-    model = Post
-    template_name = 'blog/post_detail.html'  # detail about each blog post will be on post_detail.html
+def post_detail(request, pk):
+    post = get_object_or_404(Post, pk=pk)
+    context = {'post': post}
+    return render(request, 'blog/post_detail.html', context)
 
 
 class NewsIndex(TemplateView):
@@ -73,3 +70,31 @@ def signup_company(request):
 
 class signup(TemplateView):
     template_name = 'registration/signup.html'
+
+
+class about(TemplateView):
+    template_name = 'blog/about.html'
+
+
+def create_post(request):
+    ImageFormSet = modelformset_factory(PostImages,
+                                        form=ImageForm, extra=3)
+    if request.method == 'POST':
+        post_form = PostCreateForm(request.POST)
+        formset = ImageFormSet(request.POST, request.FILES,
+                               queryset=PostImages.objects.none())
+        if post_form.is_valid() and formset.is_valid():
+            new_post = post_form.save(commit=False)
+            new_post.user = request.user
+            new_post.save()
+            for form in formset.cleaned_data:
+                if form:
+                    image = form['image']
+                    photo = PostImages(post=new_post, image=image)
+                    photo.save()
+            return redirect('home')
+    else:
+        post_form = PostCreateForm()
+        formset = ImageFormSet(queryset=PostImages.objects.none())
+    context = {'post_form': post_form, 'formset': formset}
+    return render(request, 'blog/post_new.html', context)

@@ -5,14 +5,12 @@
     <h2>Вхід</h2>
     <form method="POST">
         {% csrf_token %}
-        {% for field in form %}
         <div class="form-group">
             <p>Логін: </p>
-            <p>{{ user_form.username }}</p>
+            <p>{{ form.username }}</p>
             <p>Пароль: </p>
-            <p>{{ user_form.password1 }}</p>
+            <p>{{ form.password }}</p>
         </div>
-        {% endfor %}
         <button type="submit" class="btn btn-primary">Увійти</button>
         <button type="reset" class="btn btn-primary">Стерти</button>
     </form>

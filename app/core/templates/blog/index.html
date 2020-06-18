@@ -131,7 +131,7 @@
     <div class="slogan-container">
         <h1 class="slogan-article">"Зроблено у Чернівцях" - <br> для тих, хто підтримує <br> чернівецького виробника
         </h1>
-        <a href="" class="slogan-link">Додати оголошення</a>
+        <a href="{% url 'post_create' %}" class="slogan-link">Додати оголошення</a>
     </div>
 </section>
 
@@ -361,7 +361,7 @@
 				dots_com[slideIndex_com-1].className += " active";
 			}
         </script>
-	</div>>
+	</div>
 </section>
 
 <!-------------------------------------------------COMMENT-SECTION END--------------------------------------------->
@@ -395,13 +395,11 @@
 				dots[slideIndex-1].className += " active";
 			}
             function change(){
-                console.log('called')
                 var hours = new Date().getHours();
                 var isDayTime = hours > 6 && hours < 20;
                 if(isDayTime){
                     document.getElementById("intro-bg").style.backgroundImage = 'url({% static 'core/images/day1.jpg' %})';
                     document.getElementById("stats-bg").style.backgroundImage = 'url({% static 'core/images/day2.jpg' %})';
-                    console.log(hours);
                 }
                 else{
                     document.getElementById("intro-bg").style.backgroundImage = 'url({% static 'core/images/night1.jpg' %})';
