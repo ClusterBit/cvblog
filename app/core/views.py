@@ -68,6 +68,10 @@ class signup(TemplateView):
     template_name = 'registration/signup.html'
 
 
+class about(TemplateView):
+    template_name = 'blog/about.html'
+
+
 def create_post(request):
     ImageFormSet = modelformset_factory(PostImages,
                                         form=ImageForm, extra=3)
