@@ -1,10 +1,8 @@
 from django.forms import modelformset_factory
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.views import generic
 from django.views.generic import TemplateView
 from .models import Post, PostImages
-from django.core.mail import send_mail, BadHeaderError
-from django.http import HttpResponse
 from django.contrib.auth import authenticate, login
 from .forms import UserCreateForm, CustomerSignForm, CompanySignForm, PostCreateForm, ImageForm
 
@@ -14,9 +12,10 @@ class PostList(generic.ListView):
     template_name = 'blog/index.html'  # a list of all posts will be displayed on index.html
 
 
-class PostDetail(generic.DetailView):
-    model = Post
-    template_name = 'blog/post_detail.html'  # detail about each blog post will be on post_detail.html
+def post_detail(request, pk):
+    post = get_object_or_404(Post, pk=pk)
+    context = {'post': post}
+    return render(request, 'blog/post_detail.html', context)
 
 
 def signup_customer(request):
