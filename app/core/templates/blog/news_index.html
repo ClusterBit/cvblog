@@ -1,0 +1,163 @@
+{% extends 'blog/base.html' %}
+{% load static %}
+{% block content %}
+<div class="b_news">
+    <h1 class="n_txt">Наші останні новини</h1>
+</div>
+<div class="cont_box">
+    <div class="news_box">
+        <div class="l_news">
+            <div class="slideshow-container3">
+
+                <div class="mySlides3 fade3" style="height:100%">
+                    <img src="{% static 'core/images/nature1.jpg' %}" class="slider-bg3">
+                </div>
+
+                <div class="mySlides3 fade3" style="height:100%">
+                    <img src="{% static 'core/images/nature2.jpg' %}" class="slider-bg3">
+                </div>
+
+                <div class="mySlides3 fade3" style="height:100%">
+                    <img src="{% static 'core/images/nature3.jpg' %}" class="slider-bg3">
+                </div>
+
+                <a class="prev3" onclick="plusSlides(-1)">&#10094;</a>
+                <a class="next3" onclick="plusSlides(1)">&#10095;</a>
+
+                <div class="dots-container3">
+                    <span class="dot3" onclick="currentSlide(1)"></span>
+                    <span class="dot3" onclick="currentSlide(2)"></span>
+                    <span class="dot3" onclick="currentSlide(3)"></span>
+                </div>
+
+            </div>
+            <h2>Ось, що люди говорять про нас</h2>
+            <p>Завдяки цьому сайту я знайшла виробника, з яким уклала договір про співпрацю! Сайт зручний у
+                користуванні. Я навіть не знав, що у Чернівцях є так багато виробників. Ця онлайн платформа дозволяє
+                знайомитися з продукцією Буковини. Завдяки цьому сайту я знайшла виробника, з яким уклала договір про
+                співпрацю! Сайт зручний у користуванні. Я навіть не знав, що у Чернівцях є так багато виробників. Ця
+                онлайн платформа дозволяє знайомитися з продукцією Буковини.</p>
+            <div class="post_n">
+                <h6>Автор: Made in Chernivtsi</h6>
+            </div>
+            <div class="post_n">
+                <h6>Дата: 17.06.2020</h6>
+            </div>
+            <div class="post_n">
+                <h6>Категорії: Виробництво, Одяг</h6>
+            </div>
+            <div class="post_nn">
+                <h6 class="btn_det">Детальніше</h6>
+            </div>
+        </div>
+    </div>
+    <div class="nav_box">
+        <div class="b_sociale">
+            <h2>Знайдіть нас на: </h2>
+            <div class="soc_icon">
+            <ul>
+                <li>
+                    <a href="#"><i class="far fa-envelope"></i></a>
+                </li>
+                <li>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </li>
+
+                <li>
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                </li>
+
+                <li>
+                    <a href="#"><i class="fab fa-youtube"></i></a>
+                </li>
+
+                <li>
+                    <a href="#"><i class="fab fa-telegram"></i></a>
+                </li>
+
+                <li>
+                    <a href="#"><i class="fab fa-viber"></i></a>
+                </li>
+
+                <li>
+                    <a href="#"><i class="fab fa-whatsapp"></i></a>
+                </li>
+            </ul>
+            </div>
+        </div>
+        <div class="b_categors">
+            <h2>Категорії</h2>
+            <div class="cat_box">
+                 <a class="cat" href="#">Послуги</a>
+                 <a class="cat" href="#">Обладнання</a>
+                 <a class="cat" href="#">Одяг</a>
+            </div>
+            <div class="cat_box">
+                 <a class="cat" href="#">Продукти</a>
+                 <a class="cat" href="#">Виробництво</a>
+                 <a class="cat" href="#">Здоров'я</a>
+            </div>
+        </div>
+        <div class="plag_fb">
+            <div id="fb-root"></div>
+            <script async defer crossorigin="anonymous"
+                    src="https://connect.facebook.net/ru_RU/sdk.js#xfbml=1&version=v7.0&appId=888773171284926&autoLogAppEvents=1"
+                    nonce="njNbML4c"></script>
+            <div class="fb-page" data-href="https://www.facebook.com/madeinchernivtsi" data-tabs="timeline"
+                 data-width="430" data-height="" data-small-header="false" data-adapt-container-width="false"
+                 data-hide-cover="false" data-show-facepile="true">
+                <blockquote cite="https://www.facebook.com/madeinchernivtsi" class="fb-xfbml-parse-ignore"><a
+                        href="https://www.facebook.com/madeinchernivtsi">Made in Chernivtsi</a></blockquote>
+            </div>
+        </div>
+
+
+    </div>
+</div>
+<script>
+			var slideIndex = 1;
+			showSlides(slideIndex);
+
+			function plusSlides(n) {
+				showSlides(slideIndex += n);
+			}
+
+			function currentSlide(n) {
+				showSlides(slideIndex = n);
+			}
+
+			function showSlides(n) {
+				var i;
+				var slides = document.getElementsByClassName("mySlides3");
+				var dots = document.getElementsByClassName("dot3");
+				if (n > slides.length) {slideIndex = 1}
+				if (n < 1) {slideIndex = slides.length}
+				for (i = 0; i < slides.length; i++) {
+					slides[i].style.display = "none";
+				}
+				for (i = 0; i < dots.length; i++) {
+					dots[i].className = dots[i].className.replace(" active", "");
+				}
+				slides[slideIndex-1].style.display = "block";
+				dots[slideIndex-1].className += " active";
+			}
+            function change(){
+                console.log('called')
+                var hours = new Date().getHours();
+                var isDayTime = hours > 6 && hours < 20;
+                if(isDayTime){
+                    document.getElementById("intro-bg3").style.backgroundImage = 'url({% static 'core/images/day1.jpg' %})';
+                    document.getElementById("stats-bg3").style.backgroundImage = 'url({% static 'core/images/day2.jpg' %})';
+                    console.log(hours);
+                }
+                else{
+                    document.getElementById("intro-bg3").style.backgroundImage = 'url({% static 'core/images/night1.jpg' %})';
+                    document.getElementById("stats-bg3").style.backgroundImage = 'url({% static 'core/images/night2.jpg' %})';
+                }
+                var t = setTimeout(change, 3600);
+            }
+            change();
+
+
+</script>
+{% endblock %}

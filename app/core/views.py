@@ -22,6 +22,10 @@ def post_detail(request, pk):
     return render(request, 'blog/post_detail.html', context)
 
 
+class NewsIndex(TemplateView):
+    template_name = 'blog/news_index.html'  # detail about each blog post will be on post_detail.html
+
+
 def signup_customer(request):
     if request.method == 'POST':
         user_form = UserCreateForm(request.POST)

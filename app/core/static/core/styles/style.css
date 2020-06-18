@@ -204,6 +204,9 @@ form.search-form::after {
 
 /*******************************************SEARCH_FORM_END********************************************************/
 /*****************************************form_registrations********************************************************/
+.body{
+
+}
 .container{
     background: #F1F2F4;
     border-bottom: 2px solid #C5C5C8;
@@ -268,8 +271,12 @@ form.search-form::after {
     padding: 15px 10px 15px 40px;
     width: 100%;
 }
+.form ul{
+    list-style: none;
+    padding-left: 0;
+}
 ul li label{
-    font-size: 20px;
+    font-size: 17px;
     font-family: sans-serif;
     line-height: 2;
 }
@@ -287,6 +294,12 @@ ul li label{
     color: #FFFFFF;
     font-size: 1.5em;
     text-shadow: 0 1px 2px #21756A;
+}
+.form a{
+    display: block;
+    text-align: center;
+    font-size: 12px;
+    margin-top: 20px;
 }
 /*****************************************end_form_registrations********************************************************/
 
@@ -978,6 +991,7 @@ ul li label{
 	padding: 30px 30px 20px 30px;
 	color: #ffffff;
 	background-color: #006860;
+	margin-top: 50px;
 }
 .f_txt{
     margin: 0 auto;
@@ -1345,7 +1359,7 @@ border:0px;
     .smlbtn{
     display: block;
     }
-    
+
 }
 @media only screen and (max-width: 800px){
     .top-header-left ul {
@@ -1359,6 +1373,7 @@ border:0px;
     .numb{
     display: none !important;
     }
+    
 }
 
 @media only screen and (max-width: 790px){
@@ -1400,12 +1415,378 @@ border:0px;
     font-size: 1.6vw;
 }
 
+/*************************************BLOG_PAGES*************************************/
+.b_news{
+    background-image: linear-gradient(rgba(0,0,0,0.5),
+         rgba(0,0,0,0.7)), url('/static/core/images/b_news.jpg');
+    background-repeat: round;
+    height: 260px;
+    width: 100%;
+}
+.n_txt{
+    text-align: center;
+    font-style: Arial;
+    color: white;
+    margin: 0;
+    padding: 80px;
+}
+.cont_box{
+    width: 95%;
+    margin: 0 auto;
+    height: 1200px;
+}
+.news_box{
+    display: inline-block;
+    width: 65%;
+}
+.l_news{
+    width: 95%;
+    display: inline-block;
+    border: 1px solid lightgray;
+    border-radius: 10px;
+    margin: 0 auto;
+    margin-top: 20px;
+}
+.l_news h2{
+    color: #566985;
+    margin: -20px 0px 0px 20px;
+}
+.l_news p{
+    text-align: left;
+    color: #878C9F;
+    font-size: 12px;
+    line-height: 24px;
+    margin: 20px 20px 0px 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #eee;
+}
+.post_n{
+    float: left;
+    margin: 15px;
+}
+.post_nn{
+    margin:15px;
+    float: right;
+    margin-right: 30px;
+}
+.post_n h6{
+    color: #7d93b2;
+}
+.btn_det{
+    margin-top: 10px;
+    margin-left: 10px;
+    color: white !important;
+    display: block;
+    width: 100%;
+    line-height: 2em;
+    background: #006860;
+    border-radius: 5px;
+    border: 0;
+    cursor: pointer;
+    border-top: 1px solid #B2ECE6;
+    box-shadow: 0 0 0 1px #46A294, 0 2px 2px #808389;
+    color: #FFFFFF;
+    font-size: 1em;
+    text-shadow: 0 1px 2px #21756A;
+    padding: 5px 15px;
+}
+.nav_box{
+    width: 35%;
+    height: 100%;
+    float: right;
+    margin: 0 auto;
+    margin-top: 20px;
+}
+.plag_fb{
+    width: 430px;
+    height: 520px;
+    margin: 0 auto;
+    margin-top: 20px;
+}
+.b_sociale{
+    width: 100%;
+    max-width: 430px;
+    padding-bottom: 50px;
+    margin: 0 auto;
+    border: 1px solid lightgray;
+    border-radius: 10px;
+}
+.soc_icon{
+    text-align: center;
+    padding-top: 30px;
+}
+.soc_icon ul{
+    display: block;
+    list-style-type: none;
+    margin-block-start: 0px;
+    margin-block-end: 0px;
+    margin-inline-start: 0px;
+    padding-inline-start: 0px;
+}
+.soc_icon ul li{
+    font-size: 150%;
+    display: inline-block;
+    padding: .3em 0.5em;
+    text-decoration: none;
+    color: #000000;
+    height: 17px;
+    top: 0;
+    left: 0;
+    right: 0;
+}
+.soc_icon ul li a{
+    color: black;
+}
+.soc_icon ul li a:hover{
+    color:  #006860;
+}
+.nav_box h2{
+    color: #566985;
+    margin: 20px;
+    border-bottom: 1px solid;
+}
+.b_categors{
+    width: 100%;
+    max-width: 430px;
+    padding-bottom: 20px;
+    margin: 0 auto;
+    margin-top: 20px;
+    border: 1px solid lightgray;
+    border-radius: 10px;
+}
+.cat_box{
+    display: flex;
+    width: 100%;
+}
+.cat{
+    width: 100%;
+    float: left;
+    text-decoration: none;
+    padding: 15px 5px;
+    text-align: center;
+    margin: 5px;
+    border-radius: 2px;
+    color: #888DA0;
+    font-weight: 400;
+    background: #F5F6FA;
+    border: 1px solid #eee;
+}
+.cat:hover{
+    background: #006860;
+    color: white;
+}
+.fb_iframe_widget {
+    float: right;
+}
+@media only screen and (max-width: 1094px){
+    .news_box {
+    display: block;
+    width: 100%;
+    height: none;
+    }
+    .cont_box {
+    height: 1650px;
+    }
+    .l_news {
+    display: table;
+    }
+    .nav_box {
+    width: 100%;
+    height: 100%;
+    float: left;
+    margin: 20px;
+    }
+    .b_sociale {
+    width: 50%;
+    height: 215px;
+    display: inline-block;
+    margin-top: 50px;
+    }
+    .b_categors {
+    width: 50%;
+    display: inline-block;
+    float: right;
+    margin-top: 50px;
+    margin-right: 42px;
+    }
+}
+@media only screen and (max-width: 970px){
+    .b_sociale {
+    display: block;
+    width: 95%;
+    max-width: 1000px;
+    margin-left: 0px;
+    }
+
+    .b_categors {
+    display: block;
+    width: 95%;
+    max-width: 1000px;
+    margin-left: 0px;
+    margin-bottom: 70px;
+    }
+    .cont_box {
+    height: 1900px;
+    }
+    .nav_box {
+    height: 0px;
+    }
+    .b_news {
+    width: 100%;
+    height: 140px;
+    }
+    .l_news p{
+    -webkit-line-clamp: 4;
+    overflow: hidden;
+    display: -webkit-box;
+    display: box;
+    -webkit-box-orient: vertical;
+    box-orient: vertical;
+    }
+    .n_txt {
+    padding: 40px;
+    }
+
+}
+@media only screen and (max-width: 620px){
+    .prev3, .next3 {
+    bottom: 100px !important;
+    }
+    .b_sociale {
+    margin-top: 0px;
+    margin-left: -10px !important;
+    }
+    .b_categors {
+    margin-left: 20px !important;
+    margin-right: 30px;
+    margin-top: 20px;
+    }
+}
+@media only screen and (max-width: 460px){
+    .b_news {
+    width: 100%;
+    }
+    body {
+    width: 140% !important;
+    }
+    .plag_fb {
+    margin-left: 0px;
+    }
+    .cont_box {
+    height: 1700px;
+    }
+}
+/*****************************************SLIDER3_CONTAINER*************************************************************/
+
+.slideshow-container3 {
+    width: 100%;
+}
+.prev3, .next3 {
+  cursor: pointer;
+  position: relative;
+  bottom: 170px;
+  width: auto;
+  padding: 16px;
+  margin-top: -22px;
+  color: white;
+  font-weight: bold;
+  font-size: 18px;
+  transition: 0.6s ease;
+  border-radius: 0 3px 3px 0;
+  user-select: none;
+  z-index: 2;
+}
 .about-container h3{
 text-indent: 2vw;
 font-size: 2vw;
 margin:0 0;
 }
 
+.next3 {
+  float: right;
+  border-radius: 3px 0 0 3px;
+}
+
+.prev3:hover, .next3:hover {
+  background-color: rgba(0,0,0,0.8);
+}
+
+.slider-bg3 {
+    filter: brightness(50%);
+    object-position: center;
+    border-radius: 10px;
+    object-fit: cover;
+    height: 100%;
+    width: 100%;
+	display: block;
+    position: relative;
+    z-index: 1;
+}
+
+.slider-icon3 {
+	width: 150px;
+    height: 150px;
+    z-index: 1;
+    position: absolute;
+    left: 33%;
+    top: 10%;
+    z-index: 2;
+}
+
+.slider-article3 {
+  color: #f2f2f2;
+  font-size: 22px;
+  padding: 8px 12px;
+  position: absolute;
+  bottom: 45%;
+  width: 100%;
+  text-align: center;
+  z-index: 2;
+}
+
+.dots-container3 {
+    position: relative;
+    bottom: 50px;
+    width: 100%;
+    text-align: center;
+    margin-left: 5%;
+    z-index: 2;
+}
+
+.dot3 {
+  cursor: pointer;
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.6s ease;
+  z-index: 2;
+}
+
+.active, .dot3:hover {
+  background-color: #717171;
+}
+
+.fade3 {
+  -webkit-animation-name: fade;
+  -webkit-animation-duration: 1.5s;
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+@-webkit-keyframes fade3 {
+  from {opacity: .4}
+  to {opacity: 1}
+}
+
+@keyframes fade3 {
+  from {opacity: .4}
+  to {opacity: 1}
+}
+/*****************************************SLIDER3_CONTAINER_END********************************************************/
+/*************************************END_BLOG_PAGES*************************************/
 .about-container img{
     width: 18vw;
     float: left;
