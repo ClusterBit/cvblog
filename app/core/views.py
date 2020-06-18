@@ -70,3 +70,7 @@ def signup_company(request):
 class signup(TemplateView):
     template_name = 'registration/signup.html'
 
+
+class about(TemplateView):
+    template_name = 'blog/about.html'
+

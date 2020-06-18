@@ -1359,8 +1359,8 @@ border:0px;
     .numb{
     display: none !important;
     }
-    
 }
+
 @media only screen and (max-width: 790px){
     .main-header-left li {
     display: none;
@@ -1387,4 +1387,20 @@ border:0px;
     }
 }
 
+.about-container{
+    border: 1px solid lightgray;
+    border-radius: 10px;
+    margin: 3% auto;
+    width: 60%;
+    padding:10px 20px;
+}
 
+.about-container p{
+text-indent: 2vw;
+font-size: 2vw;
+}
+
+.about-container h3{
+text-indent: 2vw;
+font-size: 2vw;
+}
