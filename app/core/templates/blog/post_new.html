@@ -1,0 +1,25 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+<div class="container">
+    <h2>Створити пост</h2>
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="form-group">
+            <p>Заголовок: </p>
+            <p>{{ post_form.title }}</p>
+            <p>Текст: </p>
+            <p>{{ post_form.content }}</p>
+            <p>Категорії: </p>
+            <p>{{ post_form.category }}</p>
+            {{ formset.management_form }}
+            {% for form in formset %}
+            <p>Зображення: </p>
+            <p>{{ form.image }}</p>
+            {% endfor %}
+        </div>
+        <button type="submit" class="btn btn-primary">Створити</button>
+        <button type="reset" class="btn btn-primary">Стерти</button>
+    </form>
+</div>
+{% endblock%}

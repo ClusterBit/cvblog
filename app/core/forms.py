@@ -1,7 +1,7 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
-from .models import Customer, Company
+from .models import Customer, Company, Post, PostImages
 
 
 class UserCreateForm(UserCreationForm):
@@ -34,3 +34,28 @@ class CompanySignForm(forms.ModelForm):
     class Meta:
         model = Company
         fields = ('name', 'logo', 'desc_field', 'phone', 'location', 'category')
+
+
+class PostCreateForm(forms.ModelForm):
+    class Meta:
+        model = Post
+        fields = ('title', 'content', 'category')
+
+        def __init__(self, *args, **kwargs):
+            self.user = kwargs.pop('user', None)
+            super(PostCreateForm, self).__init__(*args, **kwargs)
+
+        def save(self, commit=True):
+            obj = super(PostCreateForm, self).save(commit=False)
+            obj.user = self.user
+            if commit:
+                obj.save()
+            return obj
+
+
+class ImageForm(forms.ModelForm):
+    image = forms.ImageField(label='Image')
+
+    class Meta:
+        model = PostImages
+        fields = ('image',)
