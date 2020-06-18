@@ -9,6 +9,7 @@ urlpatterns = [
     path('signup/', views.signup.as_view(), name='signup'),
     path('signup/company/', views.signup_company, name='signup_company'),
     path('signup/customer/', views.signup_customer, name='signup_customer'),
+    path('news/', views.NewsIndex.as_view(), name='news_index')
 ]
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

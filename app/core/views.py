@@ -21,6 +21,10 @@ class PostDetail(generic.DetailView):
     template_name = 'blog/post_detail.html'  # detail about each blog post will be on post_detail.html
 
 
+class NewsIndex(TemplateView):
+    template_name = 'blog/news_index.html'  # detail about each blog post will be on post_detail.html
+
+
 def signup_customer(request):
     if request.method == 'POST':
         user_form = UserCreateForm(request.POST)

@@ -1,6 +1,7 @@
 {% extends 'blog/base.html' %}
 
 {% block content %}
+<div class="body">
 <div class="container">
     <h2 class="text_reg">Реєстрація</h2>
     <form class="form" method="POST" enctype='multipart/form-data'>
@@ -15,7 +16,7 @@
         <p class="input">{{ user_form.email }}</p>
         <p class="label">Назва представника: </p>
         <p class="input">{{ company_profile_form.name }}</p>
-        <p class="label">Логотип: </p>
+        <p class="label">Логотип: </p><br>
         <p>{{ company_profile_form.logo }}</p>
         <p class="label">Детальний опис: </p>
         <p class="input">{{ company_profile_form.desc_field }}</p>
@@ -30,6 +31,6 @@
         <a href="{% url 'login' %}">У мене вже є аккаунт</a>
     </form>
 </div>
-
+</div>
 
 {% endblock %}

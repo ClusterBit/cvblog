@@ -2,25 +2,25 @@
 
 {% block content %}
 <div class="container">
-    <h2>Реєстрація</h2>
-    <form method="POST" enctype='multipart/form-data'>
+    <h2 class="text_reg">Реєстрація</h2>
+    <form class="form" method="POST" enctype='multipart/form-data'>
         {% csrf_token %}
-        <p>Логін: </p>
-        <p>{{ user_form.username }}</p>
-        <p>Пароль: </p>
-        <p>{{ user_form.password1 }}</p>
-        <p>Пітдвердження паролю: </p>
-        <p>{{ user_form.password2 }}</p>
-        <p>Електронна пошта: </p>
-        <p>{{ user_form.email }}</p>
-        <p>Ім'я: </p>
-        <p>{{ customer_profile_form.name }}</p>
-        <p>Прізвище: </p>
-        <p>{{ customer_profile_form.sur_name }}</p>
-        <p>Аватар: </p>
+        <p class="label">Логін: </p>
+        <p class="input">{{ user_form.username }}</p>
+        <p class="label">Пароль: </p>
+        <p class="input">{{ user_form.password1 }}</p>
+        <p class="label">Пітдвердження паролю: </p>
+        <p class="input">{{ user_form.password2 }}</p>
+        <p class="label">Електронна пошта: </p>
+        <p class="input">{{ user_form.email }}</p>
+        <p class="label">Ім'я: </p>
+        <p class="input">{{ customer_profile_form.name }}</p>
+        <p class="label">Прізвище: </p>
+        <p class="input">{{ customer_profile_form.sur_name }}</p>
+        <p class="label">Аватар: </p><br>
         <p>{{ customer_profile_form.avatar }}</p>
-        <p>Номер телефону: </p>
-        <p>{{ customer_profile_form.phone }}</p>
+        <p class="label">Номер телефону: </p>
+        <p class="input">{{ customer_profile_form.phone }}</p>
         <button type="submit" class="btn btn-primary">Зареєструватись</button>
         <button type="reset" class="btn btn-primary">Стерти</button>
         <a href="{% url 'login' %}">У мене вже є аккаунт</a>
