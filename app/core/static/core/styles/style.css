@@ -1391,16 +1391,33 @@ border:0px;
     border: 1px solid lightgray;
     border-radius: 10px;
     margin: 3% auto;
-    width: 60%;
-    padding:10px 20px;
+    width: 90%;
+    padding: 1vw 2vw;
 }
 
 .about-container p{
-text-indent: 2vw;
-font-size: 2vw;
+    text-indent: 1.8vw;
+    font-size: 1.6vw;
 }
 
 .about-container h3{
 text-indent: 2vw;
 font-size: 2vw;
+margin:0 0;
+}
+
+.about-container img{
+    width: 18vw;
+    float: left;
+    margin-right: 1.5vw;
+    margin-top: 3vw;
+}
+
+.about-container li{
+    text-indent: 1.8vw;
+    font-size: 1.6vw;
+}
+.about-container ul{
+    margin: 0.5vw 3vw;
+    padding: 0;
 }
