@@ -1,0 +1,20 @@
+{% extends 'blog/base.html' %}
+{% load static %}
+{% load el_pagination_tags %}
+
+{% block content %}
+<div class="container">
+    {% paginate post_catalog %}
+    {% for post in post_catalog %}
+    <h1>{{post.title}}</h1>
+    <p>{{post.content}}</p>
+    <p>Категорії: {{post.category}}</p>
+    <p>Автор: {{post.user.company.name}}</p>
+    <p>Дата публікації: {{post.created_on}}</p>
+        {% for img in post.postimages_set.all %}
+            <img class="" src="{{ img.image.url }}">
+        {% endfor %}
+    {% endfor %}
+    {% show_pages %}
+</div>
+{% endblock%}

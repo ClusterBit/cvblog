@@ -1,15 +1,19 @@
 from django.forms import modelformset_factory
 from django.shortcuts import render, redirect, get_object_or_404
-from django.views import generic
 from django.views.generic import TemplateView
 from .models import Post, PostImages
 from django.contrib.auth import authenticate, login
 from .forms import UserCreateForm, CustomerSignForm, CompanySignForm, PostCreateForm, ImageForm
 
 
-class PostList(generic.ListView):
-    queryset = Post.objects.order_by('-created_on')
-    template_name = 'blog/index.html'  # a list of all posts will be displayed on index.html
+class index(TemplateView):
+    template_name = 'blog/index.html'
+
+
+def post_list(request):
+    post_catalog = Post.objects.order_by('-created_on')
+    context = {'post_catalog': post_catalog}
+    return render(request, 'blog/post_list.html', context)
 
 
 def post_detail(request, pk):

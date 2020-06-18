@@ -151,3 +151,5 @@ EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'clusterbitgithub@gmail.com'
 EMAIL_HOST_PASSWORD = 'anaconda551155'
+
+EL_PAGINATION_PER_PAGE = 10
