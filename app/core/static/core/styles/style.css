@@ -1105,6 +1105,50 @@ ul li label{
     height: 60px;
 }
 
+.menu-dropdown {
+    position: relative;
+    display: none;
+}
+
+.menu-dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #18BCAF;
+    min-width: 50px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    top: 68px;
+    left: 0px;
+    z-index: 2;
+}
+
+.menu-dropdown-content a {
+    color: black;
+    padding: 12px 26px;
+    text-decoration: none;
+    display: block;
+    z-index: 2;
+    border-bottom: 2px solid white;
+}
+
+.menu-dropdown-content a:last-child{
+border:0px;
+}
+
+.menu-dropbtn{
+    font-size: 30px;
+    display: inline-block;
+    margin: 20px;
+    margin-right: 5px;
+    color: #ffffff;
+    z-index: 2;
+}
+
+.menu-dropdown-content a:hover {background-color: #006860}
+
+.menu-dropdown:hover .menu-dropdown-content {
+    display: block;
+}
+
 .main-header-left{
     text-align: left;
     float: left;
@@ -1161,6 +1205,22 @@ ul li label{
 .addbtn:hover{
     text-decoration: none;
     background-color: #035B54;
+}
+
+.smlbtn{
+    display:none;
+    padding: 0px;
+    text-decoration: none;
+    background-color: #006860;
+    color: #ffffff;
+    margin-top: 14px;
+    margin-right: 5px;
+    float:left;
+    text-align: center;
+    font-size: 20px;
+    border-radius: 10px 10px 10px 10px;
+    border: 2px solid #ffffff;
+    padding: 6px;
 }
 
 .blog {
@@ -1282,6 +1342,9 @@ ul li label{
     .addbtn {
     display: none;
     }
+    .smlbtn{
+    display: block;
+    }
     
 }
 @media only screen and (max-width: 800px){
@@ -1298,10 +1361,13 @@ ul li label{
     }
     
 }
-@media only screen and (max-width: 740px){
+@media only screen and (max-width: 790px){
     .main-header-left li {
     display: none;
     }
+    .menu-dropdown {
+    display: inline-block;
+}
 }
 @media only screen and (max-width: 456px){
     .top-header-left {
