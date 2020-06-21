@@ -1,9 +1,9 @@
 from django.forms import modelformset_factory
 from django.shortcuts import render, redirect, get_object_or_404
 from django.views.generic import TemplateView
-from .models import Post, PostImages
+from .models import Post, PostImages, PostComments
 from django.contrib.auth import authenticate, login
-from .forms import UserCreateForm, CustomerSignForm, CompanySignForm, PostCreateForm, ImageForm
+from .forms import UserCreateForm, CustomerSignForm, CompanySignForm, PostCreateForm, ImageForm, CommentCreateForm
 
 
 class index(TemplateView):
@@ -18,12 +18,24 @@ def post_list(request):
 
 def post_detail(request, pk):
     post = get_object_or_404(Post, pk=pk)
-    context = {'post': post}
+    comments = post.postcomments_set.order_by('-created_on')
+    if request.method == 'POST':
+        comment_form = CommentCreateForm(request.POST)
+        if comment_form.is_valid():
+            new_comm = comment_form.save(commit=False)
+            new_comm.user = request.user
+            new_comm.post = post
+            new_comm.save()
+    else:
+        comment_form = CommentCreateForm(request.POST)
+    context = {'post': post, 'comment_form': comment_form, 'comments': comments}
     return render(request, 'blog/post_detail.html', context)
 
 
-class NewsIndex(TemplateView):
-    template_name = 'blog/news_index.html'  # detail about each blog post will be on post_detail.html
+def news_list(request):
+    post_catalog = Post.objects.order_by('-created_on')
+    context = {'post_catalog': post_catalog}
+    return render(request, 'blog/news_index.html', context)
 
 
 def signup_customer(request):

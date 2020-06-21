@@ -1,25 +1,23 @@
 {% extends 'blog/base.html' %}
 {% load static %}
+{% load el_pagination_tags %}
 {% block content %}
+
 <div class="b_news">
     <h1 class="n_txt">Наші останні новини</h1>
 </div>
 <div class="cont_box">
     <div class="news_box">
+{% paginate post_catalog %}
+{% for post in post_catalog %}
+        {% if forloop.first %}
         <div class="l_news">
             <div class="slideshow-container3">
-
+                {% for img in post.postimages_set.all %}
                 <div class="mySlides3 fade3" style="height:100%">
-                    <img src="{% static 'core/images/nature1.jpg' %}" class="slider-bg3">
+                    <img src="{{ img.image.url }}" class="slider-bg3">
                 </div>
-
-                <div class="mySlides3 fade3" style="height:100%">
-                    <img src="{% static 'core/images/nature2.jpg' %}" class="slider-bg3">
-                </div>
-
-                <div class="mySlides3 fade3" style="height:100%">
-                    <img src="{% static 'core/images/nature3.jpg' %}" class="slider-bg3">
-                </div>
+                {% endfor %}
 
                 <a class="prev3" onclick="plusSlides(-1)">&#10094;</a>
                 <a class="next3" onclick="plusSlides(1)">&#10095;</a>
@@ -31,71 +29,83 @@
                 </div>
 
             </div>
-            <h2>Ось, що люди говорять про нас</h2>
-            <p>Завдяки цьому сайту я знайшла виробника, з яким уклала договір про співпрацю! Сайт зручний у
-                користуванні. Я навіть не знав, що у Чернівцях є так багато виробників. Ця онлайн платформа дозволяє
-                знайомитися з продукцією Буковини. Завдяки цьому сайту я знайшла виробника, з яким уклала договір про
-                співпрацю! Сайт зручний у користуванні. Я навіть не знав, що у Чернівцях є так багато виробників. Ця
-                онлайн платформа дозволяє знайомитися з продукцією Буковини.</p>
+            <h2>{{post.title}}</h2>
+            <p>{{post.content}}</p>
             <div class="post_n">
-                <h6>Автор: Made in Chernivtsi</h6>
+                <h6>Автор: {{post.user}}</h6>
             </div>
             <div class="post_n">
-                <h6>Дата: 17.06.2020</h6>
+                <h6>Дата: {{post.created_on}}</h6>
             </div>
             <div class="post_n">
-                <h6>Категорії: Виробництво, Одяг</h6>
+                <h6>Категорії: {{post.category}}</h6>
             </div>
             <div class="post_nn">
                 <h6 class="btn_det">Детальніше</h6>
             </div>
         </div>
+        {% elif not forloop.first %}
+                <h1>{{post.title}}</h1>
+                <p>{{post.content}}</p>
+                <p>Категорії: {{post.category}}</p>
+                <p>Автор: {{post.user.company.name}}</p>
+                <p>Дата публікації: {{post.created_on}}</p>
+                {% for img in post.postimages_set.all %}
+                    {% if forloop.first %}
+                    <img class="" src="{{ img.image.url }}">
+                    {% else %}
+                    {% endif %}
+                {% endfor %}
+        {% endif %}
+{% endfor %}
+{% show_pages %}
+
     </div>
     <div class="nav_box">
         <div class="b_sociale">
             <h2>Знайдіть нас на: </h2>
             <div class="soc_icon">
-            <ul>
-                <li>
-                    <a href="#"><i class="far fa-envelope"></i></a>
-                </li>
-                <li>
-                    <a href="#"><i class="fab fa-instagram"></i></a>
-                </li>
+                <ul>
+                    <li>
+                        <a href="#"><i class="far fa-envelope"></i></a>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </li>
 
-                <li>
-                    <a href="#"><i class="fab fa-facebook"></i></a>
-                </li>
+                    <li>
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                    </li>
 
-                <li>
-                    <a href="#"><i class="fab fa-youtube"></i></a>
-                </li>
+                    <li>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </li>
 
-                <li>
-                    <a href="#"><i class="fab fa-telegram"></i></a>
-                </li>
+                    <li>
+                        <a href="#"><i class="fab fa-telegram"></i></a>
+                    </li>
 
-                <li>
-                    <a href="#"><i class="fab fa-viber"></i></a>
-                </li>
+                    <li>
+                        <a href="#"><i class="fab fa-viber"></i></a>
+                    </li>
 
-                <li>
-                    <a href="#"><i class="fab fa-whatsapp"></i></a>
-                </li>
-            </ul>
+                    <li>
+                        <a href="#"><i class="fab fa-whatsapp"></i></a>
+                    </li>
+                </ul>
             </div>
         </div>
         <div class="b_categors">
             <h2>Категорії</h2>
             <div class="cat_box">
-                 <a class="cat" href="#">Послуги</a>
-                 <a class="cat" href="#">Обладнання</a>
-                 <a class="cat" href="#">Одяг</a>
+                <a class="cat" href="#">Послуги</a>
+                <a class="cat" href="#">Обладнання</a>
+                <a class="cat" href="#">Одяг</a>
             </div>
             <div class="cat_box">
-                 <a class="cat" href="#">Продукти</a>
-                 <a class="cat" href="#">Виробництво</a>
-                 <a class="cat" href="#">Здоров'я</a>
+                <a class="cat" href="#">Продукти</a>
+                <a class="cat" href="#">Виробництво</a>
+                <a class="cat" href="#">Здоров'я</a>
             </div>
         </div>
         <div class="plag_fb">
@@ -159,5 +169,8 @@
             change();
 
 
+
+
 </script>
+
 {% endblock %}

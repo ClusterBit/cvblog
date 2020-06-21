@@ -50,3 +50,10 @@ class Post(models.Model):
 class PostImages(models.Model):
     post = models.ForeignKey(Post, on_delete=models.CASCADE)
     image = ResizedImageField(size=[120, 120], upload_to="posts/pictures/%Y/%m/%d", null=True, blank=True)
+
+
+class PostComments(models.Model):
+    post = models.ForeignKey(Post, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    content = models.TextField(max_length=300, blank=False)
+    created_on = models.DateTimeField(auto_now_add=True)

@@ -1,7 +1,7 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
-from .models import Customer, Company, Post, PostImages
+from .models import Customer, Company, Post, PostImages, PostComments
 
 
 class UserCreateForm(UserCreationForm):
@@ -59,3 +59,20 @@ class ImageForm(forms.ModelForm):
     class Meta:
         model = PostImages
         fields = ('image',)
+
+
+class CommentCreateForm(forms.ModelForm):
+    class Meta:
+        model = PostComments
+        fields = ('content',)
+
+        def __init__(self, *args, **kwargs):
+            self.user = kwargs.pop('user', None)
+            super(CommentCreateForm, self).__init__(*args, **kwargs)
+
+        def save(self, commit=True):
+            obj = super(CommentCreateForm, self).save(commit=False)
+            obj.user = self.user
+            if commit:
+                obj.save()
+            return obj

@@ -12,7 +12,7 @@ urlpatterns = [
     path('signup/', views.signup.as_view(), name='signup'),
     path('signup/company/', views.signup_company, name='signup_company'),
     path('signup/customer/', views.signup_customer, name='signup_customer'),
-    path('news/', views.NewsIndex.as_view(), name='news_index')
+    path('news/', views.news_list, name='news_index'),
     path('about/', views.about.as_view(), name='about'),
 ]
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

@@ -10,6 +10,17 @@
     {% for img in post.postimages_set.all %}
         <img class="" src="{{ img.image.url }}">
     {% endfor %}
+    <form class="form" method="POST" enctype='multipart/form-data'>
+        {% csrf_token %}
+        {{ comment_form.content }}
+        <button type="submit" class="btn btn-primary">Залишити відгук</button>
+        <button type="reset" class="btn btn-primary">Стерти</button>
+    </form>
+    {% for comm in post.postcomments_set.all %}
+        {{comm.content}}
+        {{comm.user}}
+        {{comm.created_on}}
+    {% endfor %}
 </div>
 
 {% endblock content %}
