@@ -49,7 +49,7 @@ class Post(models.Model):
 
 class PostImages(models.Model):
     post = models.ForeignKey(Post, on_delete=models.CASCADE)
-    image = ResizedImageField(size=[120, 120], upload_to="posts/pictures/%Y/%m/%d", null=True, blank=True)
+    image = ResizedImageField(size=[1000, 1000], upload_to="posts/pictures/%Y/%m/%d", null=True, blank=True)
 
 
 class PostComments(models.Model):

@@ -2,19 +2,19 @@
 
 {% block content %}
 <div class="container">
-    <h2>Створити пост</h2>
-    <form method="POST" enctype="multipart/form-data">
+    <h2 class="text_reg">Створити пост</h2>
+    <form class="form" method="POST" enctype="multipart/form-data">
         {% csrf_token %}
         <div class="form-group">
-            <p>Заголовок: </p>
-            <p>{{ post_form.title }}</p>
-            <p>Текст: </p>
-            <p>{{ post_form.content }}</p>
-            <p>Категорії: </p>
-            <p>{{ post_form.category }}</p>
+            <p class="label">Заголовок: </p>
+            <p class="input">{{ post_form.title }}</p>
+            <p class="label">Текст: </p>
+            <p class="input">{{ post_form.content }}</p>
+            <p class="label">Категорії: </p>
+            <p class="input">{{ post_form.category }}</p>
             {{ formset.management_form }}
             {% for form in formset %}
-            <p>Зображення: </p>
+            <p class="label">Зображення: </p><br>
             <p>{{ form.image }}</p>
             {% endfor %}
         </div>

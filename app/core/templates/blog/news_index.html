@@ -8,8 +8,8 @@
 </div>
 <div class="cont_box">
     <div class="news_box">
-{% paginate post_catalog %}
-{% for post in post_catalog %}
+        {% paginate post_catalog %}
+        {% for post in post_catalog %}
         {% if forloop.first %}
         <div class="l_news">
             <div class="slideshow-container3">
@@ -29,8 +29,9 @@
                 </div>
 
             </div>
+
             <h2>{{post.title}}</h2>
-            <p>{{post.content}}</p>
+            <div class="post_con"><p>{{post.content}}</p></div>
             <div class="post_n">
                 <h6>Автор: {{post.user}}</h6>
             </div>
@@ -44,23 +45,102 @@
                 <h6 class="btn_det">Детальніше</h6>
             </div>
         </div>
-        {% elif not forloop.first %}
-                <h1>{{post.title}}</h1>
-                <p>{{post.content}}</p>
-                <p>Категорії: {{post.category}}</p>
-                <p>Автор: {{post.user.company.name}}</p>
-                <p>Дата публікації: {{post.created_on}}</p>
-                {% for img in post.postimages_set.all %}
-                    {% if forloop.first %}
-                    <img class="" src="{{ img.image.url }}">
-                    {% else %}
-                    {% endif %}
-                {% endfor %}
-        {% endif %}
-{% endfor %}
-{% show_pages %}
+    </div>
+        <div class="nav_box2">
+        <div class="b_sociale">
+            <h2>Знайдіть нас на: </h2>
+            <div class="soc_icon">
+                <ul>
+                    <li>
+                        <a href="#"><i class="far fa-envelope"></i></a>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </li>
+
+                    <li>
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                    </li>
+
+                    <li>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </li>
+
+                    <li>
+                        <a href="#"><i class="fab fa-telegram"></i></a>
+                    </li>
+
+                    <li>
+                        <a href="#"><i class="fab fa-viber"></i></a>
+                    </li>
+
+                    <li>
+                        <a href="#"><i class="fab fa-whatsapp"></i></a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="b_categors">
+            <h2>Категорії</h2>
+            <div class="cat_box">
+                <a class="cat" href="#">Послуги</a>
+                <a class="cat" href="#">Обладнання</a>
+                <a class="cat" href="#">Одяг</a>
+            </div>
+            <div class="cat_box">
+                <a class="cat" href="#">Продукти</a>
+                <a class="cat" href="#">Виробництво</a>
+                <a class="cat" href="#">Здоров'я</a>
+            </div>
+        </div>
+        <div class="plag_fb">
+            <div id="fb-root"></div>
+            <script async defer crossorigin="anonymous"
+                    src="https://connect.facebook.net/ru_RU/sdk.js#xfbml=1&version=v7.0&appId=888773171284926&autoLogAppEvents=1"
+                    nonce="njNbML4c"></script>
+            <div class="fb-page" data-href="https://www.facebook.com/madeinchernivtsi" data-tabs="timeline"
+                 data-width="430" data-height="" data-small-header="false" data-adapt-container-width="false"
+                 data-hide-cover="false" data-show-facepile="true">
+                <blockquote cite="https://www.facebook.com/madeinchernivtsi" class="fb-xfbml-parse-ignore"><a
+                        href="https://www.facebook.com/madeinchernivtsi">Made in Chernivtsi</a></blockquote>
+            </div>
+        </div>
+
 
     </div>
+    {% elif not forloop.first %}
+    {% for img in post.postimages_set.all %}
+    {% if forloop.first %}
+    <div class="news_box">
+        <div class="l_news">
+            <div class="container3">
+                <img class="slider-bg3" src="{{ img.image.url }}">
+                {% else %}
+                {% endif %}
+                {% endfor %}
+            </div>
+            <br><br><h2>{{post.title}}</h2>
+            <div class="post_con"><p>{{post.content}}</p></div>
+            <div class="post_n">
+                <h6>Автор: {{post.user}}</h6>
+            </div>
+            <div class="post_n">
+                <h6>Дата: {{post.created_on}}</h6>
+            </div>
+            <div class="post_n">
+                <h6>Категорії: {{post.category}}</h6>
+            </div>
+            <div class="post_nn">
+                <h6 class="btn_det">Детальніше</h6>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+    {% endfor %}
+    <div class="numb_p">
+    {% show_pages %}
+    </div>
+
     <div class="nav_box">
         <div class="b_sociale">
             <h2>Знайдіть нас на: </h2>
@@ -167,6 +247,7 @@
                 var t = setTimeout(change, 3600);
             }
             change();
+
 
 
 

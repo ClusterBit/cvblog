@@ -2,24 +2,21 @@
 
 {% block content %}
 <div class="container">
-    <h2>Вхід</h2>
-    <form method="POST">
+    <h2 class="text_reg">Вхід</h2>
+    <form class="form" method="POST">
         {% csrf_token %}
         <div class="form-group">
-            <p>Логін: </p>
-            <p>{{ form.username }}</p>
-            <p>Пароль: </p>
-            <p>{{ form.password }}</p>
+            <p class="label">Логін: </p>
+            <p class="input">{{ form.username }}</p>
+            <p class="label">Пароль: </p>
+            <p class="input">{{ form.password }}</p>
         </div>
         <button type="submit" class="btn btn-primary">Увійти</button>
         <button type="reset" class="btn btn-primary">Стерти</button>
-    </form>
-    <div>
         <a href="{% url 'signup' %}">Немаю аккаунту</a>
-    </div>
-    <div>
         <a href="{% url 'password_reset' %}">Не пам'ятаю пароль</a>
-    </div>
+    </form>
+
 </div>
 
 {% endblock %}
