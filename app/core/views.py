@@ -1,7 +1,7 @@
 from django.forms import modelformset_factory
 from django.shortcuts import render, redirect, get_object_or_404
 from django.views.generic import TemplateView
-from .models import Post, PostImages, PostComments
+from .models import Post, PostImages, PostComment
 from django.contrib.auth import authenticate, login
 from .forms import UserCreateForm, CustomerSignForm, CompanySignForm, PostCreateForm, ImageForm, CommentCreateForm
 
@@ -18,7 +18,7 @@ def post_list(request):
 
 def post_detail(request, pk):
     post = get_object_or_404(Post, pk=pk)
-    comments = post.postcomments_set.order_by('-created_on')
+    comments = post.postcomment_set.order_by('-created_on')
     if request.method == 'POST':
         comment_form = CommentCreateForm(request.POST)
         if comment_form.is_valid():

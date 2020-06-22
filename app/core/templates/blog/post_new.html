@@ -2,6 +2,7 @@
 
 {% block content %}
 <div class="container">
+    {% if user.company %}
     <h2 class="text_reg">Створити пост</h2>
     <form class="form" method="POST" enctype="multipart/form-data">
         {% csrf_token %}
@@ -21,5 +22,8 @@
         <button type="submit" class="btn btn-primary">Створити</button>
         <button type="reset" class="btn btn-primary">Стерти</button>
     </form>
+    {% else %}
+        <p>Щоб створювати пропозиції ви маєте бути зареєстровані як представник.</p>
+    {% endif %}
 </div>
 {% endblock%}

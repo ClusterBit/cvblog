@@ -10,7 +10,7 @@
             crossorigin="anonymous"></script>
     <link rel="stylesheet" type="text/css" href="{% static 'core/styles/style.css' %}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
-    <link rel="icon" href="img/favicon.svg" sizes="any" type="image/svg+xml">
+    <link rel="icon" href="{% static 'core/images/favicon.svg' %}" sizes="any" type="image/svg+xml">
     <title>MADE IN CV</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
@@ -69,17 +69,17 @@
         <div class="menu-dropdown">
             <div class="menu-dropbtn"><a class="menu"><i class="fa fa-bars" aria-hidden="true"></i></a></div>
             <div class="menu-dropdown-content">
-                <a href="#">Про нас</a>
-                <a href="#">Пропозиції</a>
-                <a href="#">Блог</a>
+                <a href="{% url 'about' %}">Про нас</a>
+                <a href="#">Каталог</a>
+                <a href="{% url 'news_index' %}">Блог</a>
             </div>
         </div>
         <ul>
             <li style="border-right: 2px solid #ffffff;">
-                <a href="#">Каталог</a>
+                <a href="{% url 'about' %}">Про нас</a>
             </li>
             <li>
-                <a href="http://madeinukraine.org/category/info/3">Виробники</a>
+                <a href="#">Каталог</a>
             </li>
             <li class="blog">
                 <a href="{% url 'news_index' %}">Блог</a>

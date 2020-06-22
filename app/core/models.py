@@ -8,7 +8,7 @@ from django.utils.translation import gettext_lazy as _
 
 class CATEGORIES(Choices):
     service = Choice(1, _('Послуги'))
-    equipment = Choice(2, _('Обладнання'))
+    equipment = Choice(2, _('Дозвілля'))
     clothes = Choice(3, _('Одяг'))
     products = Choice(4, _('Продукти'))
     manufacture = Choice(5, _('Виробництво'))
@@ -19,14 +19,14 @@ class Customer (models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     name = models.CharField(max_length=30, blank=False)
     sur_name = models.CharField(max_length=150, blank=False)
-    avatar = ResizedImageField(size=[120, 120], upload_to="customers/avatars/%Y/%m/%d", null=True, blank=True)
+    avatar = ResizedImageField(size=[150, 150], upload_to="customers/avatars/%Y/%m/%d", null=True, blank=True)
     phone = models.CharField(max_length=10, blank=True)
 
 
 class Company (models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     name = models.CharField(max_length=30, blank=False)
-    logo = ResizedImageField(size=[120, 120], upload_to="companies/logos/%Y/%m/%d", null=True, blank=True)
+    logo = ResizedImageField(size=[150, 150], upload_to="companies/logos/%Y/%m/%d", null=True, blank=True)
     desc_field = models.TextField(max_length=500, blank=True)
     phone = models.CharField(max_length=10, blank=True)
     location = models.CharField(max_length=30, blank=True)
@@ -52,7 +52,7 @@ class PostImages(models.Model):
     image = ResizedImageField(size=[1000, 1000], upload_to="posts/pictures/%Y/%m/%d", null=True, blank=True)
 
 
-class PostComments(models.Model):
+class PostComment(models.Model):
     post = models.ForeignKey(Post, on_delete=models.CASCADE)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     content = models.TextField(max_length=300, blank=False)
