@@ -70,7 +70,7 @@
             <div class="menu-dropbtn"><a class="menu"><i class="fa fa-bars" aria-hidden="true"></i></a></div>
             <div class="menu-dropdown-content">
                 <a href="{% url 'about' %}">Про нас</a>
-                <a href="#">Каталог</a>
+                <a href="{% url 'catalog_list' %}">Каталог</a>
                 <a href="{% url 'news_list' %}">Блог</a>
             </div>
         </div>
@@ -79,7 +79,7 @@
                 <a href="{% url 'about' %}">Про нас</a>
             </li>
             <li>
-                <a href="#">Каталог</a>
+                <a href="{% url 'catalog_list' %}">Каталог</a>
             </li>
             <li class="blog">
                 <a href="{% url 'news_list' %}">Блог</a>

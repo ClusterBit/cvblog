@@ -1,0 +1,24 @@
+{% extends 'blog/base.html' %}
+{% load static %}
+{% load el_pagination_tags %}
+
+{% block content %}
+
+<div class="firm_box">
+    <div class="b_box">
+{% for post in catalog %}
+
+<div class="cat_firm">
+    <a class="cat_link" href="#">
+        <img class="" src="{{ post.logo.url }}">
+        <h1 class="name_firm">{{post.name}}</h1>
+        <p class="detail_firm">{{post.desc_field}}</p>
+        <h5 class="c_link">Перейти на сайт</h5>
+    </a>
+</div>
+
+{% endfor %}
+    </div>
+</div>
+
+{% endblock %}
