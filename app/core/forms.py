@@ -1,7 +1,9 @@
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
-from .models import Customer, Company, Post, PostImages, PostComment
+from pytils.translit import slugify
+
+from .models import Customer, Company, Post, PostImages, PostComment, NewsPost, NewsPostImages, NewsPostComment
 
 
 class UserCreateForm(UserCreationForm):
@@ -36,6 +38,7 @@ class CompanySignForm(forms.ModelForm):
         fields = ('name', 'logo', 'desc_field', 'phone', 'location', 'category')
 
 
+# --------------------------------------------------------POST
 class PostCreateForm(forms.ModelForm):
     class Meta:
         model = Post
@@ -47,13 +50,14 @@ class PostCreateForm(forms.ModelForm):
 
         def save(self, commit=True):
             obj = super(PostCreateForm, self).save(commit=False)
+            obj.slug = self.slug or slugify(self.title)
             obj.user = self.user
             if commit:
                 obj.save()
             return obj
 
 
-class ImageForm(forms.ModelForm):
+class ImagePostForm(forms.ModelForm):
     image = forms.ImageField(label='Image')
 
     class Meta:
@@ -61,17 +65,61 @@ class ImageForm(forms.ModelForm):
         fields = ('image',)
 
 
-class CommentCreateForm(forms.ModelForm):
+class CommentCreatePostForm(forms.ModelForm):
     class Meta:
         model = PostComment
         fields = ('content',)
 
         def __init__(self, *args, **kwargs):
             self.user = kwargs.pop('user', None)
-            super(CommentCreateForm, self).__init__(*args, **kwargs)
+            super(CommentCreatePostForm, self).__init__(*args, **kwargs)
 
         def save(self, commit=True):
-            obj = super(CommentCreateForm, self).save(commit=False)
+            obj = super(CommentCreatePostForm, self).save(commit=False)
+            obj.user = self.user
+            if commit:
+                obj.save()
+            return obj
+
+
+# --------------------------------------------------------NEWS
+class NewsPostCreateForm(forms.ModelForm):
+    class Meta:
+        model = NewsPost
+        fields = ('title', 'content', 'category')
+
+        def __init__(self, *args, **kwargs):
+            self.user = kwargs.pop('user', None)
+            super(NewsPostCreateForm, self).__init__(*args, **kwargs)
+
+        def save(self, commit=True):
+            obj = super(NewsPostCreateForm, self).save(commit=False)
+            obj.slug = self.slug or slugify(self.title)
+            obj.user = self.user
+            if commit:
+                obj.save()
+            return obj
+
+
+class ImageNewsPostForm(forms.ModelForm):
+    image = forms.ImageField(label='Image')
+
+    class Meta:
+        model = NewsPostImages
+        fields = ('image',)
+
+
+class CommentCreateNewsPostForm(forms.ModelForm):
+    class Meta:
+        model = NewsPostComment
+        fields = ('content',)
+
+        def __init__(self, *args, **kwargs):
+            self.user = kwargs.pop('user', None)
+            super(CommentCreateNewsPostForm, self).__init__(*args, **kwargs)
+
+        def save(self, commit=True):
+            obj = super(CommentCreateNewsPostForm, self).save(commit=False)
             obj.user = self.user
             if commit:
                 obj.save()

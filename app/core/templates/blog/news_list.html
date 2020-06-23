@@ -8,12 +8,12 @@
 </div>
 <div class="cont_box">
     <div class="news_box">
-{% paginate post_catalog %}
-{% for post in post_catalog %}
+{% paginate news_catalog %}
+{% for post in news_catalog %}
         {% if forloop.first %}
         <div class="l_news">
             <div class="slideshow-container3">
-                {% for img in post.postimages_set.all %}
+                {% for img in post.newspostimages_set.all %}
                 <div class="mySlides3 fade3" style="height:100%">
                     <img src="{{ img.image.url }}" class="slider-bg3">
                 </div>
@@ -29,7 +29,7 @@
                 </div>
 
             </div>
-            <h2>{{post.title}}</h2>
+            <h2><a href="{{ post.get_absolute_url }}">{{post.title}}</a></h2>
             <p>{{post.content}}</p>
             <div class="post_n">
                 <h6>Автор: {{post.user}}</h6>
@@ -45,10 +45,10 @@
             </div>
         </div>
         {% elif not forloop.first %}
-                <h1>{{post.title}}</h1>
+                <h1><a href="{{ post.get_absolute_url }}">{{post.title}}</a></h1>
                 <p>{{post.content}}</p>
                 <p>Категорії: {{post.category}}</p>
-                <p>Автор: {{post.user.company.name}}</p>
+                <p>Автор: {{post.user}}</p>
                 <p>Дата публікації: {{post.created_on}}</p>
                 {% for img in post.postimages_set.all %}
                     {% if forloop.first %}
