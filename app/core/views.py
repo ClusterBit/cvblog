@@ -1,7 +1,7 @@
 from django.forms import modelformset_factory
 from django.shortcuts import render, redirect, get_object_or_404
 from django.views.generic import TemplateView
-from .models import Post, PostImages, PostComment
+from .models import Post, PostImages, PostComment, Company
 from django.contrib.auth import authenticate, login
 from .forms import UserCreateForm, CustomerSignForm, CompanySignForm, PostCreateForm, ImageForm, CommentCreateForm
 
@@ -114,3 +114,25 @@ def create_post(request):
         formset = ImageFormSet(queryset=PostImages.objects.none())
     context = {'post_form': post_form, 'formset': formset}
     return render(request, 'blog/post_new.html', context)
+
+
+def catalog_list(request):
+    catalog = Company.objects.all
+    context = {'catalog': catalog}
+    return render(request, 'blog/catalog_list.html', context)
+
+
+def catalog_detail(request, pk):
+    catalog_post = get_object_or_404(Post, pk=pk)
+    comments = post.postcomment_set.order_by('-created_on')
+    if request.method == 'POST':
+        comment_form = CommentCreateForm(request.POST)
+        if comment_form.is_valid():
+            new_comm = comment_form.save(commit=False)
+            new_comm.user = request.user
+            new_comm.post = post
+            new_comm.save()
+    else:
+        comment_form = CommentCreateForm(request.POST)
+    context = {'catalog_post': catalog_post, 'comment_form': comment_form, 'comments': comments}
+    return render(request, 'blog/catalog_detail.html', context)
