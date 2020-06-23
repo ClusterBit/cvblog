@@ -1,9 +1,11 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.urls import reverse
 from django_resized import ResizedImageField
 from django_utils.choices import Choices, Choice
 from multiselectfield import MultiSelectField
 from django.utils.translation import gettext_lazy as _
+from autoslug import AutoSlugField
 
 
 class CATEGORIES(Choices):
@@ -25,7 +27,7 @@ class Customer (models.Model):
 
 class Company (models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    name = models.CharField(max_length=30, blank=False)
+    name = models.CharField(max_length=50, blank=False)
     logo = ResizedImageField(size=[150, 150], upload_to="companies/logos/%Y/%m/%d", null=True, blank=True)
     desc_field = models.TextField(max_length=500, blank=True)
     phone = models.CharField(max_length=10, blank=True)
@@ -35,6 +37,7 @@ class Company (models.Model):
 
 class Post(models.Model):
     title = models.CharField(max_length=200, unique=True)
+    slug = AutoSlugField(populate_from='title', always_update=True, unique=True, null=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     content = models.TextField()
     created_on = models.DateTimeField(auto_now_add=True)
@@ -46,6 +49,9 @@ class Post(models.Model):
     def __str__(self):
         return self.title
 
+    def get_absolute_url(self):
+        return reverse('post_detail', kwargs={'slug': self.slug})
+
 
 class PostImages(models.Model):
     post = models.ForeignKey(Post, on_delete=models.CASCADE)
@@ -54,6 +60,36 @@ class PostImages(models.Model):
 
 class PostComment(models.Model):
     post = models.ForeignKey(Post, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    content = models.TextField(max_length=300, blank=False)
+    created_on = models.DateTimeField(auto_now_add=True)
+
+
+class NewsPost(models.Model):
+    title = models.CharField(max_length=200, unique=True)
+    slug = AutoSlugField(populate_from='title', always_update=True, unique=True, null=True)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    content = models.TextField()
+    created_on = models.DateTimeField(auto_now_add=True)
+    category = MultiSelectField(choices=CATEGORIES, default=None)
+
+    class Meta:
+        ordering = ['-created_on']
+
+    def __str__(self):
+        return self.title
+
+    def get_absolute_url(self):
+        return reverse('news_detail', kwargs={'slug': self.slug})
+
+
+class NewsPostImages(models.Model):
+    post = models.ForeignKey(NewsPost, on_delete=models.CASCADE)
+    image = ResizedImageField(size=[1000, 1000], upload_to="news/pictures/%Y/%m/%d", null=True, blank=True)
+
+
+class NewsPostComment(models.Model):
+    post = models.ForeignKey(NewsPost, on_delete=models.CASCADE)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     content = models.TextField(max_length=300, blank=False)
     created_on = models.DateTimeField(auto_now_add=True)

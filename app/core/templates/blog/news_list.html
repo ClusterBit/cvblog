@@ -8,12 +8,12 @@
 </div>
 <div class="cont_box">
     <div class="news_box">
-        {% paginate post_catalog %}
-        {% for post in post_catalog %}
+{% paginate news_catalog %}
+{% for post in news_catalog %}
         {% if forloop.first %}
         <div class="l_news">
             <div class="slideshow-container3">
-                {% for img in post.postimages_set.all %}
+                {% for img in post.newspostimages_set.all %}
                 <div class="mySlides3 fade3" style="height:100%">
                     <img src="{{ img.image.url }}" class="slider-bg3">
                 </div>
@@ -29,8 +29,7 @@
                 </div>
 
             </div>
-
-            <h2>{{post.title}}</h2>
+            <h2><a href="{{ post.get_absolute_url }}">{{post.title}}</a></h2>
             <div class="post_con"><p>{{post.content}}</p></div>
             <div class="post_n">
                 <h6>Автор: {{post.user}}</h6>
@@ -109,7 +108,7 @@
 
     </div>
     {% elif not forloop.first %}
-    {% for img in post.postimages_set.all %}
+    {% for img in post.newspostimages_set.all %}
     {% if forloop.first %}
     <div class="news_box">
         <div class="l_news">
@@ -119,7 +118,7 @@
                 {% endif %}
                 {% endfor %}
             </div>
-            <br><br><h2>{{post.title}}</h2>
+            <br><br><h2><a href="{{ post.get_absolute_url }}">{{post.title}}</a></h2>
             <div class="post_con"><p>{{post.content}}</p></div>
             <div class="post_n">
                 <h6>Автор: {{post.user}}</h6>

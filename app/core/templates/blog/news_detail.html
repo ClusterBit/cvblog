@@ -2,24 +2,24 @@
 {% block content %}
 
 <div class="container">
-    <h1>{{post.title}}</h1>
-    <p>{{post.content}}</p>
-    <p>Категорії: {{post.category}}</p>
-    <p>Автор: {{post.user}}</p>
-    <p>Дата публікації: {{post.created_on}}</p>
-    {% for img in post.postimages_set.all %}
+    <h1>{{news_post.title}}</h1>
+    <p>{{news_post.content}}</p>
+    <p>Категорії: {{news_post.category}}</p>
+    <p>Автор: {{news_post.user}}</p>
+    <p>Дата публікації: {{news_post.created_on}}</p>
+    {% for img in news_post.newspostimages_set.all %}
     <img class="" src="{{ img.image.url }}">
     {% endfor %}
     {% if user.is_authenticated %}
     <form class="form" method="POST" enctype='multipart/form-data'>
         {% csrf_token %}
-        {{ post_comment_form.content }}
+        {{ news_comment_form.content }}
         <button type="submit" class="btn btn-primary">Залишити відгук</button>
     </form>
     {% else %}
         <p>Щоб залишати відгуки, потрібно зареєструватись.</p>
     {% endif %}
-    {% for comm in post_comments %}
+    {% for comm in news_comments %}
         {% if comm.user == request.user %}
             <p>{{comm.content}}</p>
             <p>{{comm.user}}</p>

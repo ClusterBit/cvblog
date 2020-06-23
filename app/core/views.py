@@ -1,41 +1,18 @@
 from django.forms import modelformset_factory
 from django.shortcuts import render, redirect, get_object_or_404
 from django.views.generic import TemplateView
-from .models import Post, PostImages, PostComment, Company
+from .models import Post, PostImages, NewsPost
 from django.contrib.auth import authenticate, login
-from .forms import UserCreateForm, CustomerSignForm, CompanySignForm, PostCreateForm, ImageForm, CommentCreateForm
+from .forms import UserCreateForm, CustomerSignForm, CompanySignForm, \
+    PostCreateForm, ImagePostForm, CommentCreatePostForm, CommentCreateNewsPostForm
 
 
 class index(TemplateView):
     template_name = 'blog/index.html'
 
 
-def post_list(request):
-    post_catalog = Post.objects.order_by('-created_on')
-    context = {'post_catalog': post_catalog}
-    return render(request, 'blog/post_list.html', context)
-
-
-def post_detail(request, pk):
-    post = get_object_or_404(Post, pk=pk)
-    comments = post.postcomment_set.order_by('-created_on')
-    if request.method == 'POST':
-        comment_form = CommentCreateForm(request.POST)
-        if comment_form.is_valid():
-            new_comm = comment_form.save(commit=False)
-            new_comm.user = request.user
-            new_comm.post = post
-            new_comm.save()
-    else:
-        comment_form = CommentCreateForm(request.POST)
-    context = {'post': post, 'comment_form': comment_form, 'comments': comments}
-    return render(request, 'blog/post_detail.html', context)
-
-
-def news_list(request):
-    post_catalog = Post.objects.order_by('-created_on')
-    context = {'post_catalog': post_catalog}
-    return render(request, 'blog/news_index.html', context)
+class signup(TemplateView):
+    template_name = 'registration/signup.html'
 
 
 def signup_customer(request):
@@ -84,17 +61,10 @@ def signup_company(request):
     return render(request, 'registration/signup_company.html', context)
 
 
-class signup(TemplateView):
-    template_name = 'registration/signup.html'
-
-
-class about(TemplateView):
-    template_name = 'blog/about.html'
-
-
+# ----------------------------------------------------------POST
 def create_post(request):
     ImageFormSet = modelformset_factory(PostImages,
-                                        form=ImageForm, extra=3)
+                                        form=ImagePostForm, extra=3)
     if request.method == 'POST':
         post_form = PostCreateForm(request.POST)
         formset = ImageFormSet(request.POST, request.FILES,
@@ -114,6 +84,51 @@ def create_post(request):
         formset = ImageFormSet(queryset=PostImages.objects.none())
     context = {'post_form': post_form, 'formset': formset}
     return render(request, 'blog/post_new.html', context)
+
+
+def post_list(request):
+    post_catalog = Post.objects.order_by('-created_on')
+    context = {'post_catalog': post_catalog}
+    return render(request, 'blog/post_list.html', context)
+
+
+def post_detail(request, slug):
+    post = get_object_or_404(Post, slug=slug)
+    post_comments = post.postcomment_set.order_by('-created_on')
+    if request.method == 'POST':
+        post_comment_form = CommentCreatePostForm(request.POST)
+        if post_comment_form.is_valid():
+            add_post_comment = post_comment_form.save(commit=False)
+            add_post_comment.user = request.user
+            add_post_comment.post = post
+            add_post_comment.save()
+    else:
+        post_comment_form = CommentCreatePostForm(request.POST)
+    context = {'post': post, 'post_comment_form': post_comment_form, 'post_comments': post_comments}
+    return render(request, 'blog/post_detail.html', context)
+
+
+# ----------------------------------------------------------NEWS
+def news_list(request):
+    news_catalog = NewsPost.objects.order_by('-created_on')
+    context = {'news_catalog': news_catalog}
+    return render(request, 'blog/news_list.html', context)
+
+
+def news_detail(request, slug):
+    news_post = get_object_or_404(NewsPost, slug=slug)
+    news_comments = news_post.newspostcomment_set.order_by('-created_on')
+    if request.method == 'POST':
+        news_comment_form = CommentCreateNewsPostForm(request.POST)
+        if news_comment_form.is_valid():
+            add_news_comment = news_comment_form.save(commit=False)
+            add_news_comment.user = request.user
+            add_news_comment.post = news_post
+            add_news_comment.save()
+    else:
+        news_comment_form = CommentCreateNewsPostForm(request.POST)
+    context = {'news_post': news_post, 'news_comment_form': news_comment_form, 'news_comments': news_comments}
+    return render(request, 'blog/news_detail.html', context)
 
 
 def catalog_list(request):
@@ -136,3 +151,7 @@ def catalog_detail(request, pk):
         comment_form = CommentCreateForm(request.POST)
     context = {'catalog_post': catalog_post, 'comment_form': comment_form, 'comments': comments}
     return render(request, 'blog/catalog_detail.html', context)
+
+
+class about(TemplateView):
+    template_name = 'blog/about.html'
