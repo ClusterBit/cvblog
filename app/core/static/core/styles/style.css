@@ -331,6 +331,8 @@ ul li label{
 .icons-categories img {
 	width: 120px;
 	height: 120px;
+    transition-duration: 0.3s;
+
 }
 
 .icons-categories img:hover {
@@ -816,6 +818,7 @@ ul li label{
 	height: 250px;
 	margin: 0 auto;
     display: block;
+    transition-duration: 0.3s;
 }
 
 .inline-fastmenu img:hover{
