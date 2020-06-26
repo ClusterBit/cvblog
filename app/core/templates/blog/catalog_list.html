@@ -3,21 +3,81 @@
 {% load el_pagination_tags %}
 
 {% block content %}
+<div class="box_search">
+    <h4 class="categories-title">Швидкий пошук за категоріями:</h4>
+    <div class="categories-wrap">
 
+        <div class="inline-categories">
+            <a href="#">
+                <div class="icons-categories">
+                    <img src="{% static 'core/images/services-icon.png' %}">
+                </div>
+                <h3>Послуги</h3>
+            </a>
+        </div>
+
+        <div class="inline-categories">
+            <a href="#">
+                <div class="icons-categories">
+                    <img src="{% static 'core/images/production-icon.png' %}">
+                </div>
+                <h3>Виробництво</h3>
+            </a>
+        </div>
+
+        <div class="inline-categories">
+            <a href="#">
+                <div class="icons-categories">
+                    <img src="{% static 'core/images/clothes-icon.png' %}">
+                </div>
+                <h3>Одяг</h3>
+            </a>
+        </div>
+
+        <div class="inline-categories">
+            <a href="#">
+                <div class="icons-categories">
+                    <img src="{% static 'core/images/products-icon.png' %}">
+                </div>
+                <h3>Продукти</h3>
+            </a>
+        </div>
+
+        <div class="inline-categories">
+            <a href="#">
+                <div class="icons-categories">
+                    <img src="{% static 'core/images/vacation-icon.png' %}">
+                </div>
+                <h3>Дозвілля</h3>
+            </a>
+        </div>
+
+        <div class="inline-categories">
+            <a href="#">
+                <div class="icons-categories">
+                    <img src="{% static 'core/images/health-icon.png' %}">
+                </div>
+                <h3>Здоров'я</h3>
+            </a>
+        </div>
+
+    </div>
+</div>
 <div class="firm_box">
     <div class="b_box">
-{% for post in catalog %}
+        {% for post in catalog %}
 
-<div class="cat_firm">
-    <a class="cat_link" href="#">
-        <img class="" src="{{ post.logo.url }}">
-        <h1 class="name_firm">{{post.name}}</h1>
-        <p class="detail_firm">{{post.desc_field}}</p>
-        <h5 class="c_link">Перейти на сайт</h5>
-    </a>
-</div>
+        <div class="cat_firm">
+            <a class="cat_link" href="#">
+                <h6>{{post.category}}</h6>
+                <img class="" src="{{ post.logo.url }}">
+                <h1 class="name_firm">{{post.name}}</h1>
+                <p class="detail_firm">{{post.desc_field}}</p>
+                <div class="inner"><a href="#" class="c_link">Перейти на сайт</a></div>
+            </a>
+        </div>
 
-{% endfor %}
+        {% endfor %}
     </div>
 </div>
 

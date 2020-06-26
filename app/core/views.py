@@ -1,14 +1,16 @@
 from django.forms import modelformset_factory
 from django.shortcuts import render, redirect, get_object_or_404
 from django.views.generic import TemplateView
-from .models import Post, PostImages, NewsPost
+from .models import Post, PostImages, NewsPost, Company
 from django.contrib.auth import authenticate, login
 from .forms import UserCreateForm, CustomerSignForm, CompanySignForm, \
     PostCreateForm, ImagePostForm, CommentCreatePostForm, CommentCreateNewsPostForm
 
 
-class index(TemplateView):
-    template_name = 'blog/index.html'
+def index(request):
+    catalog = Company.objects.reverse()[:8]
+    context = {'catalog': catalog}
+    return render(request, 'blog/index.html', context)
 
 
 class signup(TemplateView):
