@@ -8,8 +8,8 @@
 </div>
 <div class="cont_box">
     <div class="news_box">
-{% paginate news_catalog %}
-{% for post in news_catalog %}
+        {% paginate news_catalog %}
+        {% for post in news_catalog %}
         {% if forloop.first %}
         <div class="l_news">
             <div class="slideshow-container3">
@@ -29,6 +29,7 @@
                 </div>
 
             </div>
+
             <h2><a href="{{ post.get_absolute_url }}">{{post.title}}</a></h2>
             <div class="post_con"><p>{{post.content}}</p></div>
             <div class="post_n">
@@ -41,11 +42,11 @@
                 <h6>Категорії: {{post.category}}</h6>
             </div>
             <div class="post_nn">
-                <h6 class="btn_det">Детальніше</h6>
+                <a href="{{ post.get_absolute_url }}"><h6 class="btn_det">Детальніше</h6></a>
             </div>
         </div>
     </div>
-        <div class="nav_box2">
+    <div class="nav_box2">
         <div class="b_sociale">
             <h2>Знайдіть нас на: </h2>
             <div class="soc_icon">
@@ -104,8 +105,6 @@
                         href="https://www.facebook.com/madeinchernivtsi">Made in Chernivtsi</a></blockquote>
             </div>
         </div>
-
-
     </div>
     {% elif not forloop.first %}
     {% for img in post.newspostimages_set.all %}
@@ -118,7 +117,8 @@
                 {% endif %}
                 {% endfor %}
             </div>
-            <br><br><h2><a href="{{ post.get_absolute_url }}">{{post.title}}</a></h2>
+            <br><br>
+            <h2><a href="{{ post.get_absolute_url }}">{{post.title}}</a></h2>
             <div class="post_con"><p>{{post.content}}</p></div>
             <div class="post_n">
                 <h6>Автор: {{post.user}}</h6>
@@ -130,14 +130,14 @@
                 <h6>Категорії: {{post.category}}</h6>
             </div>
             <div class="post_nn">
-                <h6 class="btn_det">Детальніше</h6>
+                <a href="{{ post.get_absolute_url }}"><h6 class="btn_det">Детальніше</h6></a>
             </div>
         </div>
     </div>
     {% endif %}
     {% endfor %}
     <div class="numb_p">
-    {% show_pages %}
+        {% show_pages %}
     </div>
 
     <div class="nav_box">
@@ -246,9 +246,6 @@
                 var t = setTimeout(change, 3600);
             }
             change();
-
-
-
 
 
 </script>

@@ -1938,6 +1938,7 @@ text-align:center !important;
 /*************************************CATALOG_PAGE*************************************/
 .firm_box{
     display: inline-block;
+    width: 100%;
 }
 .b_box{
     width: 100%;
@@ -2004,5 +2005,16 @@ text-align:center !important;
 }
 .cat_link:hover{
     box-shadow: 0px 0px 19px 3px rgba(0, 0, 0, 0.24);
+}
+
+@media only screen and (max-width: 1058px){
+    .cat_firm {
+    width: 28%;
+    }
+}
+@media only screen and (max-width: 749px){
+    .cat_firm {
+    width: 28%;
+    }
 }
 /*************************************CATALOG_PAGE_END*************************************/

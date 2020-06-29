@@ -326,12 +326,6 @@
             </div>
             <a class="prev2" onclick="plusSlides_com(-1)">&#10094;</a>
             <a class="next2" onclick="plusSlides_com(1)">&#10095;</a>
-
-            <div class="dots-container">
-                <span class="dot_com" onclick="currentSlide_com(1)"></span>
-                <span class="dot_com" onclick="currentSlide_com(2)"></span>
-                <span class="dot_com" onclick="currentSlide_com(3)"></span>
-            </div>
         </div>
 
         <script>
@@ -340,10 +334,6 @@
 
 			function plusSlides_com(n) {
 				showSlides_com(slideIndex_com += n);
-			}
-
-			function currentSlide_com(n) {
-				showSlides_com(slideIndex_com = n);
 			}
 
 			function showSlides_com(n) {
