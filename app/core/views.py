@@ -7,8 +7,10 @@ from .forms import UserCreateForm, CustomerSignForm, CompanySignForm, \
     PostCreateForm, ImagePostForm, CommentCreatePostForm, CommentCreateNewsPostForm
 
 
-class index(TemplateView):
-    template_name = 'blog/index.html'
+def index(request):
+    catalog = Company.objects.reverse()[:8]
+    context = {'catalog': catalog}
+    return render(request, 'blog/index.html', context)
 
 
 class signup(TemplateView):

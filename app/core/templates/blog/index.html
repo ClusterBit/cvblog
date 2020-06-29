@@ -169,112 +169,23 @@
         <div class="article-item">
             <h2>Основний каталог</h2>
         </div>
-        <div class="row-main-prop">
+    </div>
+    {% load el_pagination_tags %}
+    <div class="firm_box">
+        <div class="b_box">
+            {% for post in catalog %}
 
-            <div class="column-main-prop">
-                <div class="card-main-prop">
-                    <div class="img-block-mp">
-                        <img src="{% static 'core/images/buco.png' %}"class="img-mp">
-                    </div>
-                    <div class="txt-block-mp">
-                        <h3>BUCO COFFEE</h3>
-                        <p>Кавова мануфактура “BUCO” – виробник зернової та меленої кави на ринку України.“BUCO” – це
-                            українська торговельна марка із виробничими потужностями у м.Чернівці.</p>
-                    </div>
-                </div>
+            <div class="cat_firm">
+                <a class="cat_link" href="#">
+                    <h6>{{post.category}}</h6>
+                    <img class="" src="{{ post.logo.url }}">
+                    <h1 class="name_firm">{{post.name}}</h1>
+                    <p class="detail_firm">{{post.desc_field}}</p>
+                    <div class="inner"><a href="#" class="c_link">Перейти на сайт</a></div>
+                </a>
             </div>
 
-            <div class="column-main-prop">
-                <div class="card-main-prop">
-                    <div class="img-block-mp">
-                        <img src="{% static 'core/images/buco.png' %}" class="img-mp">
-                    </div>
-                    <div class="txt-block-mp">
-                        <h3>BUCO COFFEE</h3>
-                        <p>Кавова мануфактура “BUCO” – виробник зернової та меленої кави на ринку України.“BUCO” – це
-                            українська торговельна марка із виробничими потужностями у м.Чернівці.</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="column-main-prop">
-                <div class="card-main-prop">
-                    <div class="img-block-mp">
-                        <img src="{% static 'core/images/buco.png' %}" class="img-mp">
-                    </div>
-                    <div class="txt-block-mp">
-                        <h3>BUCO COFFEE</h3>
-                        <p>Кавова мануфактура “BUCO” – виробник зернової та меленої кави на ринку України.“BUCO” – це
-                            українська торговельна марка із виробничими потужностями у м.Чернівці.</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="column-main-prop">
-                <div class="card-main-prop">
-                    <div class="img-block-mp">
-                        <img src="{% static 'core/images/buco.png' %}" class="img-mp">
-                    </div>
-                    <div class="txt-block-mp">
-                        <h3>BUCO COFFEE</h3>
-                        <p>Кавова мануфактура “BUCO” – виробник зернової та меленої кави на ринку України.“BUCO” – це
-                            українська торговельна марка із виробничими потужностями у м.Чернівці.</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="column-main-prop">
-                <div class="card-main-prop">
-                    <div class="img-block-mp">
-                        <img src="{% static 'core/images/buco.png' %}" class="img-mp">
-                    </div>
-                    <div class="txt-block-mp">
-                        <h3>BUCO COFFEE</h3>
-                        <p>Кавова мануфактура “BUCO” – виробник зернової та меленої кави на ринку України.“BUCO” – це
-                            українська торговельна марка із виробничими потужностями у м.Чернівці.</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="column-main-prop">
-                <div class="card-main-prop">
-                    <div class="img-block-mp">
-                        <img src="{% static 'core/images/buco.png' %}" class="img-mp">
-                    </div>
-                    <div class="txt-block-mp">
-                        <h3>BUCO COFFEE</h3>
-                        <p>Кавова мануфактура “BUCO” – виробник зернової та меленої кави на ринку України.“BUCO” – це
-                            українська торговельна марка із виробничими потужностями у м.Чернівці.</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="column-main-prop">
-                <div class="card-main-prop">
-                    <div class="img-block-mp">
-                        <img src="{% static 'core/images/buco.png' %}" class="img-mp">
-                    </div>
-                    <div class="txt-block-mp">
-                        <h3>BUCO COFFEE</h3>
-                        <p>Кавова мануфактура “BUCO” – виробник зернової та меленої кави на ринку України.“BUCO” – це
-                            українська торговельна марка із виробничими потужностями у м.Чернівці.</p>
-                    </div>
-                </div>
-            </div>
-
-            <div class="column-main-prop">
-                <div class="card-main-prop">
-                    <div class="img-block-mp">
-                        <img src="{% static 'core/images/buco.png' %}" class="img-mp">
-                    </div>
-                    <div class="txt-block-mp">
-                        <h3>BUCO COFFEE</h3>
-                        <p>Кавова мануфактура “BUCO” – виробник зернової та меленої кави на ринку України.“BUCO” – це
-                            українська торговельна марка із виробничими потужностями у м.Чернівці.</p>
-                    </div>
-                </div>
-            </div>
-
+            {% endfor %}
         </div>
     </div>
 </section>
@@ -351,8 +262,9 @@
 				slides_com[slideIndex_com-1].style.display = "block";
 				dots_com[slideIndex_com-1].className += " active";
 			}
+
         </script>
-	</div>
+    </div>
 </section>
 
 <!-------------------------------------------------COMMENT-SECTION END--------------------------------------------->
@@ -399,5 +311,6 @@
                 var t = setTimeout(change, 3600);
             }
             change();
+
 </script>
 {%endblock%}
