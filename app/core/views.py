@@ -140,18 +140,8 @@ def catalog_list(request):
 
 
 def catalog_detail(request, pk):
-    catalog_post = get_object_or_404(Post, pk=pk)
-    comments = post.postcomment_set.order_by('-created_on')
-    if request.method == 'POST':
-        comment_form = CommentCreateForm(request.POST)
-        if comment_form.is_valid():
-            new_comm = comment_form.save(commit=False)
-            new_comm.user = request.user
-            new_comm.post = post
-            new_comm.save()
-    else:
-        comment_form = CommentCreateForm(request.POST)
-    context = {'catalog_post': catalog_post, 'comment_form': comment_form, 'comments': comments}
+    catalog_post = get_object_or_404(Company, pk=pk)
+    context = {'catalog_post': catalog_post,}
     return render(request, 'blog/catalog_detail.html', context)
 
 

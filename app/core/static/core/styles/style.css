@@ -653,10 +653,11 @@ ul li label{
     width: 100%;
     height: 100%;
     z-index: 1;
-    background-attachment: fixed;
-    background-position: center;
-    background-repeat: no-repeat;
     background-size: cover;
+    background-attachment: scroll;
+    background-position: center;
+    background-repeat: repeat;
+    background-origin: content-box;
 }
 
 .article-item h2 {
@@ -776,10 +777,11 @@ ul li label{
     width: 100%;
     height: 100%;
     z-index: 1;
-    background-attachment: fixed;
-    background-position: center;
-    background-repeat: no-repeat;
     background-size: cover;
+    background-attachment: scroll;
+    background-position: center;
+    background-repeat: repeat;
+    background-origin: content-box;
 }
 .fastmenu-container {
     max-width: 1224px;
@@ -2085,4 +2087,6 @@ text-align:center !important;
     margin-left: -31%;
     }
 }
+
+
 /*************************************CATALOG_PAGE_END*************************************/
