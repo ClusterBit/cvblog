@@ -1,5 +1,7 @@
 from django.contrib import admin
 from .models import Customer, Company, Post, PostImages, PostComment, NewsPost, NewsPostImages, NewsPostComment
+from ckeditor_uploader.widgets import CKEditorUploadingWidget
+from django import forms
 
 
 class PostImagesInline(admin.StackedInline):
@@ -24,7 +26,16 @@ class NewsPostCommentsInline(admin.StackedInline):
     model = NewsPostComment
 
 
+class NewsPostAdminForm(forms.ModelForm):
+    content = forms.CharField(widget=CKEditorUploadingWidget())
+
+    class Meta:
+        model = NewsPost
+        fields = '__all__'
+
+
 class NewsPostAdmin(admin.ModelAdmin):
+    form = NewsPostAdminForm
     inlines = [NewsPostCommentsInline, NewsPostImagesInline]
 
 
@@ -36,4 +47,3 @@ admin.site.register(PostComment)
 admin.site.register(NewsPost, NewsPostAdmin)
 admin.site.register(NewsPostImages)
 admin.site.register(NewsPostComment)
-

@@ -654,7 +654,7 @@ ul li label{
     height: 100%;
     z-index: 1;
     background-size: cover;
-    background-attachment: scroll;
+    background-attachment: fixed;
     background-position: center;
     background-repeat: repeat;
     background-origin: content-box;
@@ -778,7 +778,7 @@ ul li label{
     height: 100%;
     z-index: 1;
     background-size: cover;
-    background-attachment: scroll;
+    background-attachment: fixed;
     background-position: center;
     background-repeat: repeat;
     background-origin: content-box;
@@ -1463,6 +1463,10 @@ border:0px;
     border-bottom: 1px solid #eee;
     padding-bottom: 20px;
 }
+.post_con p img{
+    display: none;
+}
+
 .post_n{
     float: left;
     margin: 15px;
