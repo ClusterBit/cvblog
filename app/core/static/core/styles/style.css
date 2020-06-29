@@ -2093,3 +2093,25 @@ text-align:center !important;
 
 
 /*************************************CATALOG_PAGE_END*************************************/
+/*************************************news_detail*************************************/
+
+.name_f{
+    text-align: center;
+}
+.comm_form{
+    width: 500px;
+    margin: 50px;
+}
+.comm_form textarea{
+    height: 60px;
+}
+.comm_btn{
+    width: 100px;
+}
+.comm_box{
+    width: 500px;
+    border: 1px solid black;
+    margin: 50px;
+}
+
+/*************************************news_detail_END*************************************/

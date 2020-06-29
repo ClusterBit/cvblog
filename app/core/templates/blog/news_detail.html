@@ -2,7 +2,7 @@
 {% block content %}
 
 <div class="firm_box">
-    <h1>{{news_post.title}}</h1>
+    <h1 class="name_f">{{news_post.title}}</h1>
     <p>{{news_post.content}}</p>
     <p>Категорії: {{news_post.category}}</p>
     <p>Автор: {{news_post.user}}</p>
@@ -11,26 +11,26 @@
     <img class="" src="{{ img.image.url }}">
     {% endfor %}
     {% if user.is_authenticated %}
-<div class="container">
-    <form class="form" method="POST" enctype='multipart/form-data'>
+    <form class="comm_form" method="POST" enctype='multipart/form-data'>
         {% csrf_token %}
         {{ news_comment_form.content }}
-        <button type="submit" class="btn btn-primary">Залишити відгук</button>
+        <button type="submit" class="comm_btn">Залишити відгук</button>
     </form>
     {% else %}
         <p>Щоб залишати відгуки, потрібно зареєструватись.</p>
     {% endif %}
     {% for comm in news_comments %}
         {% if comm.user == request.user %}
+        <div class="comm_box">
             <p>{{comm.content}}</p>
             <p>{{comm.user}}</p>
             <p>{{comm.created_on}}</p>
+        </div>
         {% else %}
         <p>{{comm.content}}</p>
         <p>{{comm.user}}</p>
         <p>{{comm.created_on}}</p>
         {% endif %}
     {% endfor %}
-</div>
 </div>
 {% endblock content %}
