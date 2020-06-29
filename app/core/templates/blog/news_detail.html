@@ -3,7 +3,7 @@
 
 <div class="firm_box">
     <h1 class="name_f">{{news_post.title}}</h1>
-    <p>{{news_post.content}}</p>
+    <p>{{news_post.content|safe}}</p>
     <p>Категорії: {{news_post.category}}</p>
     <p>Автор: {{news_post.user}}</p>
     <p>Дата публікації: {{news_post.created_on}}</p>
