@@ -1,7 +1,7 @@
 {% extends 'blog/base.html' %}
 {% block content %}
 
-
+<div class="firm_box">
     <h1>{{news_post.title}}</h1>
     <p>{{news_post.content}}</p>
     <p>Категорії: {{news_post.category}}</p>
@@ -32,5 +32,5 @@
         {% endif %}
     {% endfor %}
 </div>
-
+</div>
 {% endblock content %}
