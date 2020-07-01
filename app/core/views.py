@@ -133,6 +133,7 @@ def news_detail(request, slug):
     return render(request, 'blog/news_detail.html', context)
 
 
+# --------------------------------------------------------COMPANY
 def catalog_list(request):
     catalog = Company.objects.all
     context = {'catalog': catalog}

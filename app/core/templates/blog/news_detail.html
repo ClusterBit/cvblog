@@ -1,17 +1,18 @@
 {% extends 'blog/base.html' %}
 {% block content %}
 
-<div class="firm_box">
+<div class="n_d_box">
     <h1 class="name_f">{{news_post.title}}</h1>
-    <p>{{news_post.content|safe}}</p>
-    <p>Категорії: {{news_post.category}}</p>
-    <p>Автор: {{news_post.user}}</p>
-    <p>Дата публікації: {{news_post.created_on}}</p>
+    <p>{{news_post.content|safe}}</p><br>
+    <p class="post_n">Категорії: {{news_post.category}}</p>
+    <p class="post_n">Автор: {{news_post.user}}</p>
+    <p class="post_n">Дата публікації: {{news_post.created_on}}</p><br><br><br><hr><br><br>
     {% for img in news_post.newspostimages_set.all %}
-    <img class="" src="{{ img.image.url }}">
+    <img class="img_n" src="{{ img.image.url }}">
     {% endfor %}
     {% if user.is_authenticated %}
     <form class="comm_form" method="POST" enctype='multipart/form-data'>
+        <i class="user_comm fas fa-user"></i>
         {% csrf_token %}
         {{ news_comment_form.content }}
         <button type="submit" class="comm_btn">Залишити відгук</button>
@@ -21,10 +22,11 @@
     {% endif %}
     {% for comm in news_comments %}
         {% if comm.user == request.user %}
+        <i class="user_comm fas fa-user"></i>
         <div class="comm_box">
-            <p>{{comm.content}}</p>
-            <p>{{comm.user}}</p>
-            <p>{{comm.created_on}}</p>
+            <p class="comm_name">{{comm.user}}</p>
+            <p class="comm_data">{{comm.created_on}}</p><br><br>
+            <p class="comm_cont">{{comm.content}}</p>
         </div>
         {% else %}
         <p>{{comm.content}}</p>

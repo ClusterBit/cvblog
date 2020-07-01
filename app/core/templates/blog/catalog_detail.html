@@ -1,10 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
-
-</body>
-</html>
+{% extends 'blog/base.html' %}
+{% block content %}
+    {{catalog_post.name}}
+    <img class="" src="{{ catalog_post.logo.url }}">
+    {{catalog_post.desc_field}}
+    {{catalog_post.phone}}
+    {{catalog_post.location}}
+    {{catalog_post.category}}
+{% endblock content %}
