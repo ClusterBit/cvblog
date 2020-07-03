@@ -3,7 +3,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from pytils.translit import slugify
 
-from .models import Customer, Company, Post, PostImages, PostComment, NewsPost, NewsPostImages, NewsPostComment
+from .models import Customer, Company, Post, PostImages, PostComment, NewsPost, NewsPostImages, NewsPostComment, ExportPost
 
 
 class UserCreateForm(UserCreationForm):
@@ -120,6 +120,24 @@ class CommentCreateNewsPostForm(forms.ModelForm):
 
         def save(self, commit=True):
             obj = super(CommentCreateNewsPostForm, self).save(commit=False)
+            obj.user = self.user
+            if commit:
+                obj.save()
+            return obj
+
+
+class ExportPostCreateForm(forms.ModelForm):
+    class Meta:
+        model = ExportPost
+        fields = ('title', 'content', 'category')
+
+        def __init__(self, *args, **kwargs):
+            self.user = kwargs.pop('user', None)
+            super(ExportPostCreateForm, self).__init__(*args, **kwargs)
+
+        def save(self, commit=True):
+            obj = super(ExportPostCreateForm, self).save(commit=False)
+            obj.slug = self.slug or slugify(self.title)
             obj.user = self.user
             if commit:
                 obj.save()

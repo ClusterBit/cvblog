@@ -95,3 +95,13 @@ class NewsPostComment(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     content = models.TextField(max_length=300, blank=False)
     created_on = models.DateTimeField(auto_now_add=True)
+
+
+class ExportPost(models.Model):
+    title = models.CharField(max_length=200, unique=True)
+    slug = AutoSlugField(populate_from='title', always_update=True, unique=True, null=True)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    content = models.TextField()
+    created_on = models.DateTimeField(auto_now_add=True)
+    category = MultiSelectField(choices=CATEGORIES, default=None)
+    website_link = models.CharField(max_length=100, blank=True)

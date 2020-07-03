@@ -574,6 +574,30 @@ ul li label{
   box-shadow: 0 5px #666;
   transform: translateY(4px);
 }
+.slogan-link2 {
+    display: block;
+    margin: 0 auto;
+    background: #006860;
+    width: 300px;
+    padding: 15px;
+    margin-top: 3%;
+    font-size: 24px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration: none;
+    outline: none;
+    color: #fff;
+    border-radius: 15px;
+    box-shadow: 0 9px 10px #000000;
+    border: 2px solid #ffffff;
+}
+.slogan-link2:hover {background-color: #02544e}
+
+.slogan-link2:active {
+  background-color: #00403b;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
 
 @media screen and (max-width: 900px) {
   .slogan-link {
@@ -1244,6 +1268,7 @@ border:0px;
     border-radius: 10px 10px 10px 10px;
     border: 2px solid #ffffff;
     padding: 6px;
+    width: 40px;
 }
 
 .blog {
@@ -1361,7 +1386,7 @@ border:0px;
     display: block;
 }
 
-@media only screen and (max-width: 970px){
+@media only screen and (max-width: 1070px){
     .addbtn {
     display: none;
     }
@@ -1383,8 +1408,14 @@ border:0px;
     display: none !important;
     }
 }
+@media only screen and (max-width: 525px){
+    .logo {
+    padding-top: 15px;
+    height: 55px;
+    }
+}
 
-@media only screen and (max-width: 790px){
+@media only screen and (max-width: 900px){
     .main-header-left li {
     display: none;
     }
@@ -2234,3 +2265,58 @@ text-align:center !important;
 }
 
 /*************************************catalog_detail_END*************************************/
+/*************************************export_list*************************************/
+
+.exp_box{
+    margin: 0 auto;
+    margin-top: 100px;
+    width: 60%;
+    border-radius: 4px;
+    padding: 15px;
+    border-color: grey;
+    background-color: snow;
+    box-shadow: 0 10px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+}
+.exp_name{
+    font-size: 22px;
+    font-family: "Myriad Pro", Helvetica, Arial, sans-serif;
+}
+.exp_det{
+    font-size: 16px;
+    font-family: "Myriad Pro", Helvetica, Arial, sans-serif;
+    line-height: 1.8;
+    text-indent: 20px;
+}
+.det_info{
+    margin: 0 auto;
+    margin-top: 10px;
+    width: 60%;
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 15px;
+    border-color: grey;
+    text-align: center;
+    background: #006860;
+    cursor: pointer;
+    text-decoration: none;
+    outline: none;
+    color: #fff;
+    box-shadow: 0 9px 10px #000000;
+    border: 2px solid #ffffff;
+}
+.det_info:hover {background-color: #02544e}
+
+.det_info:active {
+  background-color: #00403b;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+@media only screen and (max-width: 800px){
+    .exp_box {
+    width: 90%;
+    }
+    .det_info{
+    width: 90%;
+    }
+}
+/*************************************export_list_END*************************************/

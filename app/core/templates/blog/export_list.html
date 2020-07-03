@@ -1,0 +1,11 @@
+{% extends 'blog/base.html' %}
+{% load static %}
+{% block content %}
+    {% for post in export %}
+    <div class="exp_box">
+        <p class="exp_name">{{post.title}}</p><hr>
+        <p class="exp_det">{{post.content}}</p>
+    </div>
+    <a href="{{post.website_link}}" style="text-decoration: none"><div class="det_info">Додаткова інформація</div></a>
+    {% endfor %}
+{%endblock%}

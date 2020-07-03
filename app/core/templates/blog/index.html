@@ -84,7 +84,7 @@
 
         <div class="mySlides fade" style="height:100%">
             <img src="{% static 'core/images/buco.png' %}" class="slider-icon">
-            <img src="{% static 'core/images/nature1.jpg' %}" class="slider-bg">
+            <img src="{% static 'core/images/nature1.webp' %}" class="slider-bg">
             <h3 class="slider-article">BUCO COFFEE</h3>
             <div class="slider-text">Кавова мануфактура “BUCO” – виробник зернової та меленої кави на ринку України.
                 “BUCO” – це українська торговельна марка із виробничими потужностями у м.Чернівці.
@@ -93,7 +93,7 @@
 
         <div class="mySlides fade" style="height:100%">
             <img src="{% static 'core/images/buco.png' %}" class="slider-icon">
-            <img src="{% static 'core/images/nature2.jpg' %}" class="slider-bg">
+            <img src="{% static 'core/images/nature2.webp' %}" class="slider-bg">
             <h3 class="slider-article">BUCO COFFEE</h3>
             <div class="slider-text">Кавова мануфактура “BUCO” – виробник зернової та меленої кави на ринку України.
                 “BUCO” – це українська торговельна марка із виробничими потужностями у м.Чернівці.
@@ -102,7 +102,7 @@
 
         <div class="mySlides fade" style="height:100%">
             <img src="{% static 'core/images/buco.png' %}" class="slider-icon">
-            <img src="{% static 'core/images/nature3.jpg' %}" class="slider-bg">
+            <img src="{% static 'core/images/nature3.webp' %}" class="slider-bg">
             <h3 class="slider-article">BUCO COFFEE</h3>
             <div class="slider-text">Кавова мануфактура “BUCO” – виробник зернової та меленої кави на ринку України.
                 “BUCO” – це українська торговельна марка із виробничими потужностями у м.Чернівці.
@@ -176,18 +176,21 @@
             {% for post in catalog %}
 
             <div class="cat_firm">
-                <a class="cat_link" href="#">
+                <a class="cat_link" href="{% url 'catalog_detail' post.id %}">
                     <h6>{{post.category}}</h6>
                     <img class="" src="{{ post.logo.url }}">
                     <h1 class="name_firm">{{post.name}}</h1>
                     <p class="detail_firm">{{post.desc_field}}</p>
-                    <div class="inner"><a href="#" class="c_link">Перейти на сайт</a></div>
+                    <div class="inner"><a href="{{post.website_link}}" class="c_link">Перейти на сайт</a></div>
                 </a>
             </div>
 
+
             {% endfor %}
+
         </div>
     </div>
+    <a href="{% url 'catalog_list' %}" class="slogan-link2">Дивитись більше</a>
 </section>
 
 <!-------------------------------------------------MAIN-SECTION END--------------------------------------------->

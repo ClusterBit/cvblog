@@ -1,10 +1,10 @@
 from django.forms import modelformset_factory
 from django.shortcuts import render, redirect, get_object_or_404
 from django.views.generic import TemplateView
-from .models import Post, PostImages, NewsPost, Company
+from .models import Post, PostImages, NewsPost, Company, ExportPost
 from django.contrib.auth import authenticate, login
 from .forms import UserCreateForm, CustomerSignForm, CompanySignForm, \
-    PostCreateForm, ImagePostForm, CommentCreatePostForm, CommentCreateNewsPostForm
+    PostCreateForm, ImagePostForm, CommentCreatePostForm, CommentCreateNewsPostForm, ExportPostCreateForm
 
 
 def index(request):
@@ -144,6 +144,12 @@ def catalog_detail(request, pk):
     catalog_post = get_object_or_404(Company, pk=pk)
     context = {'catalog_post': catalog_post,}
     return render(request, 'blog/catalog_detail.html', context)
+
+
+def export_list(request):
+    export = ExportPost.objects.all
+    context = {'export': export}
+    return render(request, 'blog/export_list.html', context)
 
 
 class about(TemplateView):

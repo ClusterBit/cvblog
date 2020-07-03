@@ -71,6 +71,7 @@
             <div class="menu-dropdown-content">
                 <a href="{% url 'about' %}">Про нас</a>
                 <a href="{% url 'catalog_list' %}">Каталог</a>
+                <a href="{% url 'export_list' %}">Експорт</a>
                 <a href="{% url 'news_list' %}">Блог</a>
             </div>
         </div>
@@ -80,6 +81,9 @@
             </li>
             <li>
                 <a href="{% url 'catalog_list' %}">Каталог</a>
+            </li>
+            <li style="border-left: 2px solid #ffffff;">
+                <a href="{% url 'export_list' %}">Експорт</a>
             </li>
             <li class="blog">
                 <a href="{% url 'news_list' %}">Блог</a>

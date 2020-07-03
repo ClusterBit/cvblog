@@ -15,6 +15,7 @@ urlpatterns = [
     path('news/<slug:slug>', views.news_detail, name='news_detail'),
     path('catalog/', views.catalog_list, name='catalog_list'),
     path('catalog/<int:pk>', views.catalog_detail, name='catalog_detail'),
+    path('export/', views.export_list, name='export_list'),
     path('about/', views.about.as_view(), name='about'),
 ]
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
