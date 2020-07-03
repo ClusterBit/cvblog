@@ -27,11 +27,13 @@ class Customer (models.Model):
 
 class Company (models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
-    name = models.CharField(max_length=50, blank=False)
+    name = models.CharField(max_length=100, blank=False)
     logo = ResizedImageField(size=[150, 150], upload_to="companies/logos/%Y/%m/%d", null=True, blank=True)
-    desc_field = models.TextField(max_length=500, blank=True)
+    short_content = models.TextField(max_length=200, blank=True)
+    content = models.TextField(max_length=1000, blank=True)
     phone = models.CharField(max_length=10, blank=True)
-    location = models.CharField(max_length=30, blank=True)
+    location = models.CharField(max_length=100, blank=True)
+    website_link = models.CharField(max_length=100, blank=True)
     category = MultiSelectField(choices=CATEGORIES, default=None)
 
 

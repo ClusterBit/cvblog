@@ -35,7 +35,7 @@ class CustomerSignForm(forms.ModelForm):
 class CompanySignForm(forms.ModelForm):
     class Meta:
         model = Company
-        fields = ('name', 'logo', 'desc_field', 'phone', 'location', 'category')
+        fields = ('name', 'logo', 'short_content', 'content', 'phone', 'website_link', 'location', 'category')
 
 
 # --------------------------------------------------------POST

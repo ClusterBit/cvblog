@@ -1,9 +1,14 @@
 {% extends 'blog/base.html' %}
 {% block content %}
-    {{catalog_post.name}}
-    <img class="" src="{{ catalog_post.logo.url }}">
-    {{catalog_post.desc_field}}
-    {{catalog_post.phone}}
-    {{catalog_post.location}}
-    {{catalog_post.category}}
+<div class="n_d_box">
+    <p class="c_d_name">{{catalog_post.name}}</p>
+    <p class="dat_content">{{catalog_post.content}}</p>
+    <div class="contact_det">
+    <p><b>Телефон: </b> {{catalog_post.phone}}</p>
+    <p><b>Адреса: </b> {{catalog_post.location}}</p>
+    <p><b>Категорії: </b> {{catalog_post.category}}</p>
+    </div>
+    <a href="{{catalog_post.website_link}}"><img class="logo_d" src="{{ catalog_post.logo.url }}"></a>
+    <br><br><br><br><br><br>
+</div>
 {% endblock content %}

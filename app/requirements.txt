@@ -18,5 +18,5 @@ pytils==0.3
 pytz==2020.1
 six==1.15.0
 sqlparse==0.3.1
-django-ckeditor-5.9.0
-django-js-asset-1.2.2
+django-ckeditor==5.9.0
+django-js-asset==1.2.2
