@@ -6,7 +6,7 @@
     <p>{{news_post.content|safe}}</p><br>
     <p class="post_n">Категорії: {{news_post.category}}</p>
     <p class="post_n">Автор: {{news_post.user}}</p>
-    <p class="post_n">Дата публікації: {{news_post.created_on}}</p><br><br><br><hr><br><br>
+    <p class="post_n">Дата публікації: {{news_post.created_on}}</p><br><br><br><br><hr><br><br>
     {% for img in news_post.newspostimages_set.all %}
     <img class="img_n" src="{{ img.image.url }}">
     {% endfor %}
