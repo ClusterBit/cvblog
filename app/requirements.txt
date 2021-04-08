@@ -1,7 +1,7 @@
 anyjson==0.3.3
 asgiref==3.2.8
 choices==0.1
-Django==3.0.7
+Django==3.0.14
 django-autoslug==1.9.7
 django-choices==1.7.1
 django-cleanup==5.0.0
